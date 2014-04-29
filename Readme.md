@@ -1,0 +1,1 @@
+# Automag Vraptor project
