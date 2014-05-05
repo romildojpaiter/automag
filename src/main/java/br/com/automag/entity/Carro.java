@@ -4,11 +4,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import javax.management.relation.Role;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -62,6 +65,10 @@ public class Carro implements PersistEntity {
 	@NotNull
 	public String cor;
 	
+	public String finalPlaca;
+	
+	public String quilometragem;
+	
 	@Enumerated(EnumType.STRING)
 	public DOMINIO_TIPO_COMBUSTIVEL combustivel;
 	
@@ -74,20 +81,23 @@ public class Carro implements PersistEntity {
 	
 	@OneToMany
 	@JoinTable(name="carro_imagem",
-		joinColumns= @JoinColumn(columnDefinition="idCarro"),
-		inverseJoinColumns= @JoinColumn(columnDefinition="idImagem")) 
+		joinColumns= @JoinColumn(name="idCarro"),
+		inverseJoinColumns= @JoinColumn(name="idImagem")) 
 	@OrderBy(value="idImagem ASC")
 	public List<Imagem> imagens;
 	
-	@Column(name = "carro_itemopcional", nullable = false, insertable = true, updatable = true)
-	@ElementCollection
-	@Enumerated(EnumType.STRING)	
+	@ElementCollection(targetClass=DOMINIO_ITEM_OPCIONAL.class, fetch=FetchType.EAGER)
+    @Enumerated(EnumType.STRING) // Possibly optional (I'm not sure) but defaults to ORDINAL.
+    @CollectionTable(name="carro_itemopcional")
+    @Column(name="itemopcional") 	
 	public Set<DOMINIO_ITEM_OPCIONAL> itensOpcionais;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
 	public Date dataCadastro;
 
+	@Column(columnDefinition="TEXT")
+	public String observacao;
 	
 	@Version
 	public Integer version;
