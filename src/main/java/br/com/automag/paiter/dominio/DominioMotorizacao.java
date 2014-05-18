@@ -4,27 +4,33 @@ import org.apache.commons.lang.StringUtils;
 
 import br.com.automag.paiter.core.utils.BaseDominioInterface;
 
-public class DominioSimNao {
+public class DominioMotorizacao {
 	
-	public enum DOMINIO_SIM_NAO implements BaseDominioInterface<DOMINIO_SIM_NAO> {
+	public enum DOMINIO_MOTORIZACAO implements BaseDominioInterface<DOMINIO_MOTORIZACAO> {
 		
-		SIM("Sim"), 
-		NAO("Não");
+		UM_PONTO_ZERO("1.0"), 
+		UM_PONTO_TRES("1.3"), 
+		UM_PONTO_QUATRO("1.4"),
+		UM_PONTO_SEIS("1.6"),
+		DOIS_PONTO_ZERO("2.0"),
+		DOIS_PONTO_OITO("2.8"),
+		NAO_INFORMADO("Não informado")
+		;
 
 		private String descricao;
 		private String longDesc;
 
-		DOMINIO_SIM_NAO(String desc) {
+		DOMINIO_MOTORIZACAO(String desc) {
 			this.descricao = desc;
 			this.longDesc = desc;
 		}
 
-		DOMINIO_SIM_NAO(String desc, String longDesc) {
+		DOMINIO_MOTORIZACAO(String desc, String longDesc) {
 			this.descricao = desc;
 			this.longDesc = longDesc;
 		}
 
-		public DOMINIO_SIM_NAO valueOf(int ord) {
+		public DOMINIO_MOTORIZACAO valueOf(int ord) {
 			return values()[ord];
 		}
 

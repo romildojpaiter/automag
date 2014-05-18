@@ -11,6 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
 import br.com.automag.paiter.core.entity.PersistEntity;
+import br.com.automag.paiter.dominio.DominioSimNao.DOMINIO_SIM_NAO;
 
 @Entity
 @SequenceGenerator(name="imagem_seq", sequenceName = "imagem_seq", allocationSize = 1)
@@ -89,6 +90,18 @@ public class Imagem implements PersistEntity{
 
 	public void setSize(String size) {
 		this.size = size;
+	}
+
+	@Override
+	public DOMINIO_SIM_NAO getRemovido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setRemovido(DOMINIO_SIM_NAO removido) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

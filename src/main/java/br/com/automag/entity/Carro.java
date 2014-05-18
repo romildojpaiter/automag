@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import javax.management.relation.Role;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -38,73 +37,91 @@ public class Carro implements PersistEntity {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="carro_seq")
-	public Long idCarro;
+	private Long idCarro;
 	
 	@NotNull
-	public String modelo;
+	private String modelo;
 	
 	@NotNull(message="Informe o preço do veículo")
-	public Long preco;
+	private Long preco;
+	
+	@ManyToOne
+	@JoinColumn(name="loja_id")
+	private Loja loja;
 	
 	@Enumerated(EnumType.STRING)
-	public DOMINIO_TIPO_VEICULO tipoVeiculo;
+	private DOMINIO_TIPO_VEICULO tipoVeiculo;
 	
 	@ManyToOne
 	@JoinColumn(name="idmarca",
 		insertable=true,
 		nullable=false)
 	@NotNull(message="Informe a marca do veículo")
-	public Marca marca;
+	private Marca marca;
 	
 	@NotNull
-	public String anoFabricacao;
+	private String anoFabricacao;
 	
 	@NotNull
-	public String anoModelo;
+	private String anoModelo;
 	
 	@NotNull
-	public String cor;
+	private String cor;
 	
-	public String finalPlaca;
+	private String finalPlaca;
 	
-	public String quilometragem;
+	private String quilometragem;
 	
 	@Enumerated(EnumType.STRING)
-	public DOMINIO_TIPO_COMBUSTIVEL combustivel;
+	private DOMINIO_TIPO_COMBUSTIVEL combustivel;
 	
 	@Enumerated(EnumType.STRING)
 	@NotNull
-	public DOMINIO_SIM_NAO publicado;
+	private DOMINIO_SIM_NAO publicado;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	public Date dataPublicacao;
+	private Date dataPublicacao;
 	
 	@OneToMany
 	@JoinTable(name="carro_imagem",
 		joinColumns= @JoinColumn(name="idCarro"),
 		inverseJoinColumns= @JoinColumn(name="idImagem")) 
 	@OrderBy(value="idImagem ASC")
-	public List<Imagem> imagens;
+	private List<Imagem> imagens;
 	
 	@ElementCollection(targetClass=DOMINIO_ITEM_OPCIONAL.class, fetch=FetchType.EAGER)
     @Enumerated(EnumType.STRING) // Possibly optional (I'm not sure) but defaults to ORDINAL.
     @CollectionTable(name="carro_itemopcional")
     @Column(name="itemopcional") 	
-	public Set<DOMINIO_ITEM_OPCIONAL> itensOpcionais;
+	private Set<DOMINIO_ITEM_OPCIONAL> itensOpcionais;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@NotNull
-	public Date dataCadastro;
+	private Date dataCadastro;
 
 	@Column(columnDefinition="TEXT")
-	public String observacao;
+	private String observacao;
 	
 	@Version
-	public Integer version;
+	private Integer version;
+
+	@Enumerated(EnumType.STRING)
+	@NotNull
+	private DOMINIO_SIM_NAO removido;
 	
 	@Override
 	public Long getId() {
 		return idCarro;
+	}
+
+	@Override
+	public DOMINIO_SIM_NAO getRemovido() {
+		return removido;
+	}
+
+	@Override
+	public void setRemovido(DOMINIO_SIM_NAO removido) {
+		this.removido = removido;
 	}
 
 	
