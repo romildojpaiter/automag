@@ -1,8 +1,8 @@
-package br.com.automag.paiter.dominio;
+package br.com.automag.dominio;
 
 import org.apache.commons.lang.StringUtils;
 
-import br.com.automag.paiter.core.utils.BaseDominioInterface;
+import br.com.automag.paiter.core.utils.dominio.BaseDominioInterface;
 
 public class DominioMotorizacao {
 	

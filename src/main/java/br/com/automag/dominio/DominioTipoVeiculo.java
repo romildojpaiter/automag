@@ -1,6 +1,8 @@
-package br.com.automag.paiter.dominio;
+package br.com.automag.dominio;
 
-import br.com.automag.paiter.core.utils.BaseDominioInterface;
+import org.apache.commons.lang.StringUtils;
+
+import br.com.automag.paiter.core.utils.dominio.BaseDominioInterface;
 
 public class DominioTipoVeiculo {
 	
@@ -27,44 +29,37 @@ public class DominioTipoVeiculo {
 
 		@Override
 		public String getLongDesc() {
-			// TODO Auto-generated method stub
-			return null;
+			return (StringUtils.isBlank(this.longDesc)) ? this.desc : this.longDesc;
 		}
 
 		@Override
 		public Integer getOrdinal() {
-			// TODO Auto-generated method stub
-			return null;
+			return this.getOrdinal();
 		}
 
 		@Override
 		public String getName() {
-			// TODO Auto-generated method stub
-			return null;
+			return this.getName();
 		}
 
 		@Override
 		public String getDesc() {
-			// TODO Auto-generated method stub
-			return null;
+			return this.getDesc();
 		}
 
 		@Override
 		public Integer getSize() {
-			// TODO Auto-generated method stub
-			return null;
+			return values().length;
 		}
 
 		@Override
 		public boolean isValido(int cdItemDominio) {
-			// TODO Auto-generated method stub
-			return false;
+			return (this.getSize() >= cdItemDominio) ? true : false;
 		}
 
 		@Override
 		public DOMINIO_TIPO_VEICULO valueOf(int ord) {
-			// TODO Auto-generated method stub
-			return null;
+			return values()[ord];
 		}
 		
 	}

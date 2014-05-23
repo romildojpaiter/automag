@@ -1,30 +1,34 @@
-package br.com.automag.paiter.dominio;
+package br.com.automag.dominio;
 
 import org.apache.commons.lang.StringUtils;
 
-import br.com.automag.paiter.core.utils.BaseDominioInterface;
+import br.com.automag.paiter.core.utils.dominio.BaseDominioInterface;
 
-public class DominioSimNao {
+public class DominioTipoCondicao {
 	
-	public enum DOMINIO_SIM_NAO implements BaseDominioInterface<DOMINIO_SIM_NAO> {
+	public enum DOMINIO_TIPO_CONDICAO implements BaseDominioInterface<DOMINIO_TIPO_CONDICAO> {
 		
-		SIM("Sim"), 
-		NAO("Não");
-
+		RUIM("Ruim"),
+		REGULAR("Regular"),
+		BOM("Bom"),
+		OTIMO("Ótimo"),
+		EXCELENTE("Excelente");
+		
+		
 		private String descricao;
 		private String longDesc;
 
-		DOMINIO_SIM_NAO(String desc) {
+		DOMINIO_TIPO_CONDICAO(String desc) {
 			this.descricao = desc;
 			this.longDesc = desc;
 		}
 
-		DOMINIO_SIM_NAO(String desc, String longDesc) {
+		DOMINIO_TIPO_CONDICAO(String desc, String longDesc) {
 			this.descricao = desc;
 			this.longDesc = longDesc;
 		}
 
-		public DOMINIO_SIM_NAO valueOf(int ord) {
+		public DOMINIO_TIPO_CONDICAO valueOf(int ord) {
 			return values()[ord];
 		}
 

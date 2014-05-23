@@ -1,26 +1,37 @@
-package br.com.automag.entity;
+package br.com.automag.entity.old;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
-import br.com.automag.paiter.core.entity.PersistEntity;
-import br.com.automag.paiter.dominio.DominioSimNao.DOMINIO_SIM_NAO;
+import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
+import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
-@SequenceGenerator(name="imagem_gene_seq", sequenceName = "imagem_gene_seq", allocationSize = 1)
-public class ImagemGenerica implements PersistEntity{
+@SequenceGenerator(name="imagem_seq", sequenceName = "imagem_seq", allocationSize = 1)
+public class Imagem implements BasePersistEntity<Long>{
 
 	@Id
-	@GeneratedValue(generator="imagem_gene_seq", strategy=GenerationType.SEQUENCE)
-	public Long idImagemGenerica;
+	@GeneratedValue(generator="imagem_seq", strategy=GenerationType.SEQUENCE)
+	public Long idImagem;
 	
+	@ManyToOne
+	@JoinColumn(name="idcarro",
+		nullable=false,
+		insertable=true)
+	public Carro carro;
+	
+	@Basic(fetch=FetchType.EAGER)
 	@Lob
-	public byte data;
+	public byte[] data;
 	
 	@NotNull
 	public String contentType;
@@ -33,22 +44,30 @@ public class ImagemGenerica implements PersistEntity{
 	
 	@Override
 	public Long getId() {
-		return idImagemGenerica;
+		return idImagem;
 	}
 
-	public Long getIdImagemGenerica() {
-		return idImagemGenerica;
+	public Long getIdImagem() {
+		return idImagem;
 	}
 
-	public void setIdImagemGenerica(Long idImagem) {
-		this.idImagemGenerica = idImagem;
+	public void setIdImagem(Long idImagem) {
+		this.idImagem = idImagem;
 	}
 
-	public byte getData() {
+	public Carro getCarro() {
+		return carro;
+	}
+
+	public void setCarro(Carro carro) {
+		this.carro = carro;
+	}
+
+	public byte[] getData() {
 		return data;
 	}
 
-	public void setData(byte data) {
+	public void setData(byte[] data) {
 		this.data = data;
 	}
 

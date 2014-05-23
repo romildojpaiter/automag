@@ -1,4 +1,4 @@
-package br.com.automag.entity;
+package br.com.automag.entity.old;
 
 import java.util.Date;
 import java.util.List;
@@ -25,15 +25,15 @@ import javax.persistence.TemporalType;
 import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 
-import br.com.automag.paiter.core.entity.PersistEntity;
-import br.com.automag.paiter.dominio.DominioItemOpcional.DOMINIO_ITEM_OPCIONAL;
-import br.com.automag.paiter.dominio.DominioSimNao.DOMINIO_SIM_NAO;
-import br.com.automag.paiter.dominio.DominioTipoCombustivel.DOMINIO_TIPO_COMBUSTIVEL;
-import br.com.automag.paiter.dominio.DominioTipoVeiculo.DOMINIO_TIPO_VEICULO;
+import br.com.automag.dominio.DominioItemOpcional.DOMINIO_ITEM_OPCIONAL;
+import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
+import br.com.automag.dominio.DominioTipoCombustivel.DOMINIO_TIPO_COMBUSTIVEL;
+import br.com.automag.dominio.DominioTipoVeiculo.DOMINIO_TIPO_VEICULO;
+import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
 @SequenceGenerator(name="carro_seq", sequenceName = "carro_seq", allocationSize = 1)
-public class Carro implements PersistEntity {
+public class Carro extends BasePersistEntity<Long> {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="carro_seq")

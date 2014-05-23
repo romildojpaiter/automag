@@ -1,9 +1,9 @@
-package br.com.automag.entity;
+package br.com.automag.entity.old;
 
-import br.com.automag.paiter.core.entity.PersistEntity;
-import br.com.automag.paiter.dominio.DominioSimNao.DOMINIO_SIM_NAO;
+import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
+import br.com.automag.paiter.core.entity.BasePersistEntity;
 
-public class ItemOpcional implements PersistEntity {
+public class ItemOpcional implements BasePersistEntity<Long> {
  
 	private Long idItemOpcional;
 	 

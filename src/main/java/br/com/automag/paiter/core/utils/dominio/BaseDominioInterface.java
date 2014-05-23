@@ -1,4 +1,4 @@
-package br.com.automag.paiter.core.utils;
+package br.com.automag.paiter.core.utils.dominio;
 
 public interface BaseDominioInterface<T> {
 	
