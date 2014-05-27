@@ -11,7 +11,7 @@
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <!-- <non-jta-data-source>java:jdbc/automagDS</non-jta-data-source> -->
         
-		<class>br.com.automag.entity.old.Carro</class>
+		<class>br.com.automag.entity.old.Veiculo</class>
 		<class>br.com.automag.entity.old.Imagem</class>
 		<class>br.com.automag.entity.old.Marca</class>
 		 

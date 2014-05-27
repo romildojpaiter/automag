@@ -3,31 +3,23 @@ package br.com.automag.entity.old;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
-import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
 @SequenceGenerator(name="imagem_seq", sequenceName = "imagem_seq", allocationSize = 1)
-public class Imagem implements BasePersistEntity<Long>{
+public class Imagem extends BasePersistEntity<Long>{
 
-	@Id
-	@GeneratedValue(generator="imagem_seq", strategy=GenerationType.SEQUENCE)
-	public Long idImagem;
-	
 	@ManyToOne
 	@JoinColumn(name="idcarro",
 		nullable=false,
 		insertable=true)
-	public Carro carro;
+	public Veiculo carro;
 	
 	@Basic(fetch=FetchType.EAGER)
 	@Lob
@@ -42,24 +34,11 @@ public class Imagem implements BasePersistEntity<Long>{
 	@NotNull
 	public String size;
 	
-	@Override
-	public Long getId() {
-		return idImagem;
-	}
-
-	public Long getIdImagem() {
-		return idImagem;
-	}
-
-	public void setIdImagem(Long idImagem) {
-		this.idImagem = idImagem;
-	}
-
-	public Carro getCarro() {
+	public Veiculo getCarro() {
 		return carro;
 	}
 
-	public void setCarro(Carro carro) {
+	public void setCarro(Veiculo carro) {
 		this.carro = carro;
 	}
 
@@ -96,15 +75,16 @@ public class Imagem implements BasePersistEntity<Long>{
 	}
 
 	@Override
-	public DOMINIO_SIM_NAO getRemovido() {
+	public int hashCode() {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	@Override
-	public void setRemovido(DOMINIO_SIM_NAO removido) {
+	public boolean equals(Object objeto) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
+
 
 }

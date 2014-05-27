@@ -2,21 +2,18 @@ package br.com.automag.entity.old;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
 
 import br.com.automag.dominio.DominioTipoDocumento.DOMINIO_TIPO_DOCUMENTO;
+import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @MappedSuperclass
-public abstract class Cliente {
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+public abstract class Cliente extends BasePersistEntity<Long> {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
-
 	@Enumerated(EnumType.STRING)
 	protected DOMINIO_TIPO_DOCUMENTO tipoDocumento;
 	
@@ -47,11 +44,5 @@ public abstract class Cliente {
 		this.id = id;
 	}
 
-	@Override
-	public abstract int hashCode();
-
-	@Override
-	public abstract boolean equals(Object obj);
-	
 	
 }

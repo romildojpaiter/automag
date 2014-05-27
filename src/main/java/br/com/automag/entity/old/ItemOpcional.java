@@ -1,42 +1,21 @@
 package br.com.automag.entity.old;
 
-import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
+
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
-public class ItemOpcional implements BasePersistEntity<Long> {
+@Entity
+public class ItemOpcional extends BasePersistEntity<Long> {
  
-	private Long idItemOpcional;
-	 
+	@NotNull
 	private String nome;
-	 
+	
+	@Temporal(TemporalType.DATE)
 	private String dataCadastro;
 	 
-	private DOMINIO_SIM_NAO removido;
-	
-
-	@Override
-	public Long getId() {
-		return this.idItemOpcional;
-	}
-
-	@Override
-	public DOMINIO_SIM_NAO getRemovido() {
-		return this.removido;
-	}
-
-	@Override
-	public void setRemovido(DOMINIO_SIM_NAO removido) {
-		this.removido = removido;
-	}
-
-	public Long getIdItemOpcional() {
-		return idItemOpcional;
-	}
-
-	public void setIdItemOpcional(Long idItemOpcional) {
-		this.idItemOpcional = idItemOpcional;
-	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -51,6 +30,18 @@ public class ItemOpcional implements BasePersistEntity<Long> {
 
 	public void setDataCadastro(String dataCadastro) {
 		this.dataCadastro = dataCadastro;
+	}
+
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean equals(Object objeto) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

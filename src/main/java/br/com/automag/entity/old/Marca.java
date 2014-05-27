@@ -21,7 +21,7 @@ import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
 @SequenceGenerator(name="marca_seq", sequenceName = "marca_seq", allocationSize = 1)
-public class Marca implements BasePersistEntity<Long>{
+public class Marca extends BasePersistEntity<Long>{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="marca_seq")
@@ -43,21 +43,6 @@ public class Marca implements BasePersistEntity<Long>{
 	@Enumerated(EnumType.STRING)
 	private DOMINIO_SIM_NAO removido;
 	
-	@Override
-	public Long getId() {
-		return idMarca;
-	}
-
-	@Override
-	public DOMINIO_SIM_NAO getRemovido() {
-		return this.removido;
-	}
-
-	@Override
-	public void setRemovido(DOMINIO_SIM_NAO removido) {
-		this.removido = removido;
-	}
-
 	public Long getIdMarca() {
 		return idMarca;
 	}
@@ -96,6 +81,18 @@ public class Marca implements BasePersistEntity<Long>{
 
 	public void setVersion(Integer version) {
 		this.version = version;
+	}
+
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean equals(Object objeto) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

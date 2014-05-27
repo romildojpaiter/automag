@@ -1,24 +1,16 @@
 package br.com.automag.entity.old;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
-import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
 @SequenceGenerator(name="imagem_gene_seq", sequenceName = "imagem_gene_seq", allocationSize = 1)
-public class ImagemGenerica implements BasePersistEntity<Long>{
+public class ImagemGenerica extends BasePersistEntity<Long>{
 
-	@Id
-	@GeneratedValue(generator="imagem_gene_seq", strategy=GenerationType.SEQUENCE)
-	public Long idImagemGenerica;
-	
 	@Lob
 	public byte[] data;
 	
@@ -31,19 +23,6 @@ public class ImagemGenerica implements BasePersistEntity<Long>{
 	@NotNull
 	public String size;
 	
-	@Override
-	public Long getId() {
-		return idImagemGenerica;
-	}
-
-	public Long getIdImagemGenerica() {
-		return idImagemGenerica;
-	}
-
-	public void setIdImagemGenerica(Long idImagem) {
-		this.idImagemGenerica = idImagem;
-	}
-
 	public byte[] getData() {
 		return data;
 	}
@@ -77,15 +56,16 @@ public class ImagemGenerica implements BasePersistEntity<Long>{
 	}
 
 	@Override
-	public DOMINIO_SIM_NAO getRemovido() {
+	public int hashCode() {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
 
 	@Override
-	public void setRemovido(DOMINIO_SIM_NAO removido) {
+	public boolean equals(Object objeto) {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
+
 
 }

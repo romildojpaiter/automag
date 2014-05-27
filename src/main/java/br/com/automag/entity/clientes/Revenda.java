@@ -1,30 +1,37 @@
-package br.com.automag.entity;
+package br.com.automag.entity.clientes;
 
-import br.com.automag.paiter.core.entity.PersistEntity;
-import br.com.automag.paiter.dominio.DOMINIO_TIPO_CLIENTE;
 import java.util.Date;
-import br.com.automag.paiter.dominio.DominioSimNao;
+import java.util.Set;
 
-public class Revenda extends Pessoa implements PersistEntity {
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-	private Long idCliente;
+import br.com.automag.dominio.DominioTipoCliente.DOMINIO_TIPO_CLIENTE;
+import br.com.automag.entity.old.ImagemGenerica;
+import br.com.automag.entity.old.Veiculo;
 
+@Entity
+public class Revenda extends Pessoa {
+
+	@Enumerated(EnumType.STRING)
 	private DOMINIO_TIPO_CLIENTE tipoCliente;
 
 	private Date dataCadastro;
 
-	private DominioSimNao.DOMINIO_TIPO_CONDICAO ativo;
-
 	private PessoaJuridica pessoaJuridica;
-
-	private Telefone[] telefones;
-
-	private Endereco endereco;
 
 	private PessoaFisica pessoaFisica;
 
-	private Veiculo[] veliculos;
+	private Set<Telefone> telefones;
 
+	private Set<Veiculo> veliculos;
+
+	private Endereco endereco;
+
+	@ManyToOne
+	@JoinColumn(name="idimagem")
 	private ImagemGenerica logomarca;
-
 }
