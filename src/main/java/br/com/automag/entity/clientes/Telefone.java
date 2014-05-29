@@ -1,24 +1,27 @@
 package br.com.automag.entity.clientes;
 
 import javax.persistence.Entity;
-import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
 
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
-@SequenceGenerator(name="telefone_seq", sequenceName="telefone_seq", allocationSize=1)
 public class Telefone extends BasePersistEntity<Long> {
 
-	private String prefixo;
-
+	@NotNull
 	private String numero;
+	
+	
+	private Pessoa pessoa;
 
-	public String getPrefixo() {
-		return prefixo;
+	private Loja loja;
+
+	public String getNumeroTelefoneFormatado() {
+		return null;
 	}
 
-	public void setPrefixo(String prefixo) {
-		this.prefixo = prefixo;
+	public void limpaNumeroTelefone() {
+
 	}
 
 	public String getNumero() {
@@ -29,12 +32,27 @@ public class Telefone extends BasePersistEntity<Long> {
 		this.numero = numero;
 	}
 
+	public Pessoa getPessoa() {
+		return pessoa;
+	}
+
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
+	}
+
+	public Loja getLoja() {
+		return loja;
+	}
+
+	public void setLoja(Loja loja) {
+		this.loja = loja;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
-		result = prime * result + ((prefixo == null) ? 0 : prefixo.hashCode());
 		return result;
 	}
 
@@ -52,13 +70,7 @@ public class Telefone extends BasePersistEntity<Long> {
 				return false;
 		} else if (!numero.equals(other.numero))
 			return false;
-		if (prefixo == null) {
-			if (other.prefixo != null)
-				return false;
-		} else if (!prefixo.equals(other.prefixo))
-			return false;
 		return true;
 	}
-
 
 }

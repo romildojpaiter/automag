@@ -1,31 +1,92 @@
 package br.com.automag.entity.clientes;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
-import br.com.automag.dominio.DominioEstado.DOMINIO_ESTADO;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
-@SequenceGenerator(name="endereco_seq",sequenceName="endereco_seq",allocationSize=1)
 public class Endereco extends BasePersistEntity<Long> {
 
+	@NotNull
 	private String logradouro;
 
+	@NotNull
 	private String bairro;
 
+	@NotNull
+	private String municipio;
+
+	@NotNull
+	private String estado;
+
+	@NotNull
 	private Integer numero;
 
-	@Transient
-	private DOMINIO_ESTADO estado;
-
+	@NotNull
 	private String CEP;
 
-	@ManyToOne
-	private Municipio municipio;
-	
+	public String getEnderecoCompletoFormatado() {
+		return null;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((CEP == null) ? 0 : CEP.hashCode());
+		result = prime * result + ((bairro == null) ? 0 : bairro.hashCode());
+		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
+		result = prime * result
+				+ ((logradouro == null) ? 0 : logradouro.hashCode());
+		result = prime * result
+				+ ((municipio == null) ? 0 : municipio.hashCode());
+		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Endereco other = (Endereco) obj;
+		if (CEP == null) {
+			if (other.CEP != null)
+				return false;
+		} else if (!CEP.equals(other.CEP))
+			return false;
+		if (bairro == null) {
+			if (other.bairro != null)
+				return false;
+		} else if (!bairro.equals(other.bairro))
+			return false;
+		if (estado == null) {
+			if (other.estado != null)
+				return false;
+		} else if (!estado.equals(other.estado))
+			return false;
+		if (logradouro == null) {
+			if (other.logradouro != null)
+				return false;
+		} else if (!logradouro.equals(other.logradouro))
+			return false;
+		if (municipio == null) {
+			if (other.municipio != null)
+				return false;
+		} else if (!municipio.equals(other.municipio))
+			return false;
+		if (numero == null) {
+			if (other.numero != null)
+				return false;
+		} else if (!numero.equals(other.numero))
+			return false;
+		return true;
+	}
+
 	public String getLogradouro() {
 		return logradouro;
 	}
@@ -42,6 +103,22 @@ public class Endereco extends BasePersistEntity<Long> {
 		this.bairro = bairro;
 	}
 
+	public String getMunicipio() {
+		return municipio;
+	}
+
+	public void setMunicipio(String municipio) {
+		this.municipio = municipio;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
 	public Integer getNumero() {
 		return numero;
 	}
@@ -50,40 +127,12 @@ public class Endereco extends BasePersistEntity<Long> {
 		this.numero = numero;
 	}
 
-	public DOMINIO_ESTADO getEstado() {
-		return estado;
-	}
-
-	public void setEstado(DOMINIO_ESTADO estado) {
-		this.estado = estado;
-	}
-
 	public String getCEP() {
 		return CEP;
 	}
 
 	public void setCEP(String cEP) {
 		CEP = cEP;
-	}
-
-	public Municipio getMunicipio() {
-		return municipio;
-	}
-
-	public void setMunicipio(Municipio municipio) {
-		this.municipio = municipio;
-	}
-
-	@Override
-	public int hashCode() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public boolean equals(Object objeto) {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 }

@@ -1,5 +1,8 @@
 package br.com.automag.entity.clientes;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class PessoaFisica {
 
 	private String documentoCPF;

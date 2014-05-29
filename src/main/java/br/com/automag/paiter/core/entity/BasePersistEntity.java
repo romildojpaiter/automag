@@ -1,6 +1,7 @@
 package br.com.automag.paiter.core.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -8,8 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import br.com.automag.dominio.DominioAtivoInativo.DOMINIO_ATIVO_INATIVO;
 import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
 
 @MappedSuperclass
@@ -19,8 +23,14 @@ public abstract class BasePersistEntity<ID extends Serializable> {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	protected ID id;
 	
+	@Temporal(TemporalType.DATE)
+	protected Date dataCadastro;
+	
 	@Enumerated(EnumType.STRING)
 	protected DOMINIO_SIM_NAO removido;
+	
+	@Enumerated(EnumType.STRING)
+	protected DOMINIO_ATIVO_INATIVO situacao;
 	
 	@Version
 	protected Integer version;
@@ -55,6 +65,14 @@ public abstract class BasePersistEntity<ID extends Serializable> {
 
 	@Override
 	public abstract boolean equals(Object objeto);
+
+	public Date getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
 	
 	
 }

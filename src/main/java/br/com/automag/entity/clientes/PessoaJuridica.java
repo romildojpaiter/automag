@@ -1,5 +1,8 @@
 package br.com.automag.entity.clientes;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public class PessoaJuridica {
 
 	private String documentoCNPJ;
@@ -41,7 +44,5 @@ public class PessoaJuridica {
 	public void setNomeFantasia(String nomeFantasia) {
 		this.nomeFantasia = nomeFantasia;
 	}
-	
-	
 
 }
