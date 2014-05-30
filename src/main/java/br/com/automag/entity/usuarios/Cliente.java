@@ -1,39 +1,46 @@
 package br.com.automag.entity.usuarios;
 
 import java.util.ArrayList;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 import br.com.automag.dominio.DominioTipoCliente.DOMINIO_TIPO_CLIENTE;
 import br.com.automag.entity.deprecated.old.Imagem;
 import br.com.automag.entity.deprecated.old.Veiculo;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
+@Entity
 public class Cliente extends BasePersistEntity<Long> implements ClienteAutenticavel {
 
+	@Enumerated(EnumType.STRING)
 	private DOMINIO_TIPO_CLIENTE tipoCliente;
 
 	private PessoaJuridica pessoaJuridica;
 
 	private ArrayList<Veiculo> veiculos;
 
-	private CategoriaCliente[] categorias;
+	private ArrayList<CategoriaCliente> categorias;
 
 	private Servico servicos;
 
 	private Localidade localidade;
 
-	private Usuario usuarioPrincipal;
+	private UsuarioCliente usuarioPrincipal;
 
-	private Usuario[] usuarios;
+	private Set<UsuarioCliente> usuarios;
 
 	private Imagem logomarca;
 
 	private Pessoa pessoa;
 
-	private Telefone[] telefones;
+	private ArrayList<Telefone> telefones;
 
 	private Endereco endereco;
 
-	private Classificado[] classificados;
+	private ArrayList<Classificado> classificados;
 
 	public String gerarMetadadaServicos() {
 		return null;
@@ -75,22 +82,6 @@ public class Cliente extends BasePersistEntity<Long> implements ClienteAutentica
 		this.pessoaJuridica = pessoaJuridica;
 	}
 
-	public Veiculo[] getVeiculos() {
-		return veiculos;
-	}
-
-	public void setVeiculos(Veiculo[] veiculos) {
-		this.veiculos = veiculos;
-	}
-
-	public CategoriaCliente[] getCategorias() {
-		return categorias;
-	}
-
-	public void setCategorias(CategoriaCliente[] categorias) {
-		this.categorias = categorias;
-	}
-
 	public Servico getServicos() {
 		return servicos;
 	}
@@ -107,20 +98,12 @@ public class Cliente extends BasePersistEntity<Long> implements ClienteAutentica
 		this.localidade = localidade;
 	}
 
-	public Usuario getUsuarioPrincipal() {
+	public UsuarioCliente getUsuarioPrincipal() {
 		return usuarioPrincipal;
 	}
 
-	public void setUsuarioPrincipal(Usuario usuarioPrincipal) {
+	public void setUsuarioPrincipal(UsuarioCliente usuarioPrincipal) {
 		this.usuarioPrincipal = usuarioPrincipal;
-	}
-
-	public Usuario[] getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(Usuario[] usuarios) {
-		this.usuarios = usuarios;
 	}
 
 	public Imagem getLogomarca() {
@@ -139,28 +122,12 @@ public class Cliente extends BasePersistEntity<Long> implements ClienteAutentica
 		this.pessoa = pessoa;
 	}
 
-	public Telefone[] getTelefones() {
-		return telefones;
-	}
-
-	public void setTelefones(Telefone[] telefones) {
-		this.telefones = telefones;
-	}
-
 	public Endereco getEndereco() {
 		return endereco;
 	}
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
-	}
-
-	public Classificado[] getClassificados() {
-		return classificados;
-	}
-
-	public void setClassificados(Classificado[] classificados) {
-		this.classificados = classificados;
 	}
 
 	@Override
@@ -188,6 +155,46 @@ public class Cliente extends BasePersistEntity<Long> implements ClienteAutentica
 		} else if (!usuarioPrincipal.equals(other.usuarioPrincipal))
 			return false;
 		return true;
+	}
+
+	public ArrayList<Veiculo> getVeiculos() {
+		return veiculos;
+	}
+
+	public void setVeiculos(ArrayList<Veiculo> veiculos) {
+		this.veiculos = veiculos;
+	}
+
+	public ArrayList<CategoriaCliente> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(ArrayList<CategoriaCliente> categorias) {
+		this.categorias = categorias;
+	}
+
+	public Set<UsuarioCliente> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(Set<UsuarioCliente> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+	public ArrayList<Telefone> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(ArrayList<Telefone> telefones) {
+		this.telefones = telefones;
+	}
+
+	public ArrayList<Classificado> getClassificados() {
+		return classificados;
+	}
+
+	public void setClassificados(ArrayList<Classificado> classificados) {
+		this.classificados = classificados;
 	}
 	
 

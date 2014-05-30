@@ -1,12 +1,14 @@
 package br.com.automag.entity.usuarios;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -18,6 +20,7 @@ import br.com.automag.paiter.core.entity.BasePersistEntity;
 @Entity
 public class Pessoa extends BasePersistEntity<Long> {
 
+	@NotNull
 	private String nome;
 
 	@Email
@@ -28,10 +31,13 @@ public class Pessoa extends BasePersistEntity<Long> {
 
 	private Date dataNascimento;
 
+	@NotNull
 	private String documentoCPF;
 
+	@NotNull
 	private String registroGeral;
 
+	@Temporal(TemporalType.DATE)
 	private Date dataEmissaoRG;
 
 	@Enumerated(EnumType.STRING)
@@ -40,6 +46,7 @@ public class Pessoa extends BasePersistEntity<Long> {
 	@Enumerated(EnumType.STRING)
 	private DOMINIO_SIM_NAO concordaTermosDeUso;
 
+	
 	private ArrayList<PedidoServico> pedidosDeServicos;
 
 	private Cliente cliente;
@@ -116,13 +123,6 @@ public class Pessoa extends BasePersistEntity<Long> {
 		this.concordaTermosDeUso = concordaTermosDeUso;
 	}
 
-	public PedidoServico[] getPedidosDeServicos() {
-		return pedidosDeServicos;
-	}
-
-	public void setPedidosDeServicos(PedidoServico[] pedidosDeServicos) {
-		this.pedidosDeServicos = pedidosDeServicos;
-	}
 
 	public Cliente getCliente() {
 		return cliente;
@@ -152,7 +152,6 @@ public class Pessoa extends BasePersistEntity<Long> {
 				+ ((documentoCPF == null) ? 0 : documentoCPF.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + Arrays.hashCode(pedidosDeServicos);
 		result = prime * result
 				+ ((registroGeral == null) ? 0 : registroGeral.hashCode());
 		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
@@ -196,8 +195,6 @@ public class Pessoa extends BasePersistEntity<Long> {
 			if (other.nome != null)
 				return false;
 		} else if (!nome.equals(other.nome))
-			return false;
-		if (!Arrays.equals(pedidosDeServicos, other.pedidosDeServicos))
 			return false;
 		if (registroGeral == null) {
 			if (other.registroGeral != null)

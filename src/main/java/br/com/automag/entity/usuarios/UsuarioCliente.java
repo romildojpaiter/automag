@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.Email;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
-public class Usuario extends BasePersistEntity<Long> {
+public class UsuarioCliente extends BasePersistEntity<Long> {
 	
 	@NotNull
 	private String nome;
@@ -21,6 +21,7 @@ public class Usuario extends BasePersistEntity<Long> {
 	@Column(unique=true, updatable=false, nullable=false)
 	private String login;
 
+	@NotNull
 	private String password;
 
 	@Transient
@@ -87,7 +88,7 @@ public class Usuario extends BasePersistEntity<Long> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		UsuarioCliente other = (UsuarioCliente) obj;
 		if (email == null) {
 			if (other.email != null)
 				return false;
