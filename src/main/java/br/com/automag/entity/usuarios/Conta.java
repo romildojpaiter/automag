@@ -2,21 +2,16 @@ package br.com.automag.entity.usuarios;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
-
-import org.hibernate.validator.constraints.Email;
 
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
-public class UsuarioCliente extends BasePersistEntity<Long> {
+public class Conta extends BasePersistEntity<Long> {
 	
-	@NotNull
-	private String nome;
-	
-	@Email
-	private String email;
 	
 	@Column(unique=true, updatable=false, nullable=false)
 	private String login;
@@ -27,22 +22,10 @@ public class UsuarioCliente extends BasePersistEntity<Long> {
 	@Transient
 	private String temporalPassword;
 	
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	@OneToOne
+	@JoinColumn(name="cliente_id")
+	private Cliente cliente;
+	
 
 	public String getLogin() {
 		return login;
@@ -72,9 +55,7 @@ public class UsuarioCliente extends BasePersistEntity<Long> {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result
 				+ ((password == null) ? 0 : password.hashCode());
 		return result;
@@ -88,21 +69,11 @@ public class UsuarioCliente extends BasePersistEntity<Long> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UsuarioCliente other = (UsuarioCliente) obj;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
+		Conta other = (Conta) obj;
 		if (login == null) {
 			if (other.login != null)
 				return false;
 		} else if (!login.equals(other.login))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -110,6 +81,14 @@ public class UsuarioCliente extends BasePersistEntity<Long> {
 		} else if (!password.equals(other.password))
 			return false;
 		return true;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	

@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
+import br.com.automag.entity.deprecated.veiculos.Veiculo;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity

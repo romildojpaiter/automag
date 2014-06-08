@@ -1,4 +1,4 @@
-package br.com.automag.entity.usuarios;
+package br.com.automag.entity.usuarios.interfaces;
 
 public interface ClienteAutenticavel {
 

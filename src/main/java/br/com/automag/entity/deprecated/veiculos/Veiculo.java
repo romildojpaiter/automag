@@ -1,4 +1,4 @@
-package br.com.automag.entity.deprecated.old;
+package br.com.automag.entity.deprecated.veiculos;
 
 import java.util.Date;
 import java.util.List;
@@ -26,10 +26,13 @@ import br.com.automag.dominio.DominioItemOpcional.DOMINIO_ITEM_OPCIONAL;
 import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
 import br.com.automag.dominio.DominioTipoCombustivel.DOMINIO_TIPO_COMBUSTIVEL;
 import br.com.automag.dominio.DominioTipoVeiculo.DOMINIO_TIPO_VEICULO;
+import br.com.automag.entity.deprecated.old.Imagem;
+import br.com.automag.entity.deprecated.old.Loja;
+import br.com.automag.entity.deprecated.old.Marca;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
-@SequenceGenerator(name="carro_seq", sequenceName = "carro_seq", allocationSize = 1)
+@SequenceGenerator(name="veiculo_seq", sequenceName = "veiculo_seq", allocationSize = 1)
 public class Veiculo extends BasePersistEntity<Long> {
 
 	@NotNull

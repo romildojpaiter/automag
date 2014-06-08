@@ -1,14 +1,25 @@
 package br.com.automag.entity.usuarios;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.constraints.NotNull;
+
 import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
+@Entity
 public class Classificado extends BasePersistEntity<Long> {
 
+	@NotNull
 	private String titulo;
 
+	@NotNull
+	@Column(columnDefinition="TEXT")
 	private String descricao;
 
+	@Enumerated(EnumType.STRING)
 	private DOMINIO_SIM_NAO finalizado;
 
 	public String getTitulo() {

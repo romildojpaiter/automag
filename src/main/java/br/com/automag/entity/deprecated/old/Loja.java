@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderColumn;
 
+import br.com.automag.entity.deprecated.veiculos.Veiculo;
+
 @Entity
 public class Loja extends Cliente  {
 

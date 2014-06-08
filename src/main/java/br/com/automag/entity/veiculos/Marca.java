@@ -1,12 +1,14 @@
-package br.com.automag.entity.usuarios;
+package br.com.automag.entity.veiculos;
 
 import javax.persistence.Entity;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
-public class Servico extends BasePersistEntity<Long> {
+@SequenceGenerator(name="marca_seq",sequenceName="marca_seq",allocationSize=1)
+public class Marca extends BasePersistEntity<Long> {
 
 	@NotNull
 	private String nome;
@@ -35,7 +37,7 @@ public class Servico extends BasePersistEntity<Long> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Servico other = (Servico) obj;
+		Marca other = (Marca) obj;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;

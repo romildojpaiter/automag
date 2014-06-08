@@ -1,9 +1,14 @@
 package br.com.automag.entity.usuarios;
 
+import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
+
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
+@Entity
 public class Telefone extends BasePersistEntity<Long>{
 
+	@NotNull
 	private String numero;
 
 	public String getNumeroTelefoneFormatado() {
@@ -11,7 +16,7 @@ public class Telefone extends BasePersistEntity<Long>{
 	}
 
 	public void limpaNumeroTelefone() {
-
+		this.numero = "";
 	}
 
 	@Override

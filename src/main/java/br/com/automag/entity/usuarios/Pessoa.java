@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -24,11 +26,13 @@ public class Pessoa extends BasePersistEntity<Long> {
 	private String nome;
 
 	@Email
+	@NotNull
 	private String email;
 
 	@Enumerated(EnumType.STRING)
 	private DOMINIO_SEXO sexo;
 
+	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 
 	@NotNull
@@ -49,6 +53,8 @@ public class Pessoa extends BasePersistEntity<Long> {
 	
 	private ArrayList<PedidoServico> pedidosDeServicos;
 
+	@OneToOne
+	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 
 	public String getNome() {

@@ -1,22 +1,27 @@
 package br.com.automag.entity.usuarios;
 
-import javax.persistence.Entity;
+import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 
-import br.com.automag.paiter.core.entity.BasePersistEntity;
+@Embeddable
+public class Endereco{
 
-@Entity
-public class Endereco extends BasePersistEntity<Long>{
-
+	@NotNull
 	private String logradouro;
 
+	@NotNull
 	private String bairro;
 
+	@NotNull
 	private String municipio;
 
+	@NotNull
 	private String estado;
 
+	@NotNull
 	private Integer numero;
 
+	@NotNull
 	private String CEP;
 
 	public String getEnderecoCompletoFormatado() {

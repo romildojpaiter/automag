@@ -3,13 +3,22 @@ package br.com.automag.entity.usuarios;
 import java.util.ArrayList;
 import java.util.Set;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.ListIndexBase;
 
 import br.com.automag.dominio.DominioTipoCliente.DOMINIO_TIPO_CLIENTE;
 import br.com.automag.entity.deprecated.old.Imagem;
-import br.com.automag.entity.deprecated.old.Veiculo;
+import br.com.automag.entity.deprecated.veiculos.Veiculo;
+import br.com.automag.entity.usuarios.interfaces.ClienteAutenticavel;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
@@ -18,28 +27,54 @@ public class Cliente extends BasePersistEntity<Long> implements ClienteAutentica
 	@Enumerated(EnumType.STRING)
 	private DOMINIO_TIPO_CLIENTE tipoCliente;
 
+	@Embedded
 	private PessoaJuridica pessoaJuridica;
 
-	private ArrayList<Veiculo> veiculos;
+	@OneToOne(mappedBy="cliente")
+	private Conta contaPrincipal;
+	
+	private Set<Conta> conta;
 
-	private ArrayList<CategoriaCliente> categorias;
-
-	private Servico servicos;
-
-	private Localidade localidade;
-
-	private UsuarioCliente usuarioPrincipal;
-
-	private Set<UsuarioCliente> usuarios;
-
-	private Imagem logomarca;
-
+	@OneToOne(mappedBy="cliente")
 	private Pessoa pessoa;
 
-	private ArrayList<Telefone> telefones;
+	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
+	@ListIndexBase(value=1)
+	@JoinTable(name = "cliente_veiculos", 
+		joinColumns = @JoinColumn(name = "idCliente"), 
+		inverseJoinColumns = @JoinColumn(name = "idVeiculos", unique = false))
+	private ArrayList<Veiculo> veiculos;
+	
+	
+	private Imagem logomarca;
 
+	private Localidade localidade;
+	
+	@Embedded
 	private Endereco endereco;
 
+	
+	private ArrayList<Servico> servicos;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
+	@ListIndexBase(value=1)
+	@JoinTable(name = "cliente_categoria", 
+	joinColumns = @JoinColumn(name = "idCliente"), 
+	inverseJoinColumns = @JoinColumn(name = "idCategoria", unique = false))
+	private ArrayList<CategoriaCliente> categorias;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
+	@ListIndexBase(value=1)
+	@JoinTable(name = "cliente_telefones", 
+	joinColumns = @JoinColumn(name = "idCliente"), 
+	inverseJoinColumns = @JoinColumn(name = "idTelefone", unique = false))
+	private ArrayList<Telefone> telefones;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
+	@ListIndexBase(value=1)
+	@JoinTable(name = "cliente_classificados", 
+		joinColumns = @JoinColumn(name = "idCliente"), 
+		inverseJoinColumns = @JoinColumn(name = "idClassificado", unique = false))
 	private ArrayList<Classificado> classificados;
 
 	public String gerarMetadadaServicos() {
@@ -52,7 +87,7 @@ public class Cliente extends BasePersistEntity<Long> implements ClienteAutentica
 
 
 	/**
-	 * @see br.com.automag.entity.usuarios.ClienteAutenticavel#validaPassword(int, int)
+	 * @see br.com.automag.entity.usuarios.interfaces.ClienteAutenticavel#validaPassword(int, int)
 	 */
 	public boolean validaPassword(String password, String temporalPassword) {
 		return false;
@@ -60,7 +95,7 @@ public class Cliente extends BasePersistEntity<Long> implements ClienteAutentica
 
 
 	/**
-	 * @see br.com.automag.entity.usuarios.ClienteAutenticavel#login()
+	 * @see br.com.automag.entity.usuarios.interfaces.ClienteAutenticavel#login()
 	 */
 	public boolean login() {
 		return false;
@@ -82,14 +117,6 @@ public class Cliente extends BasePersistEntity<Long> implements ClienteAutentica
 		this.pessoaJuridica = pessoaJuridica;
 	}
 
-	public Servico getServicos() {
-		return servicos;
-	}
-
-	public void setServicos(Servico servicos) {
-		this.servicos = servicos;
-	}
-
 	public Localidade getLocalidade() {
 		return localidade;
 	}
@@ -98,12 +125,12 @@ public class Cliente extends BasePersistEntity<Long> implements ClienteAutentica
 		this.localidade = localidade;
 	}
 
-	public UsuarioCliente getUsuarioPrincipal() {
-		return usuarioPrincipal;
+	public Conta getContaPrincipal() {
+		return contaPrincipal;
 	}
 
-	public void setUsuarioPrincipal(UsuarioCliente usuarioPrincipal) {
-		this.usuarioPrincipal = usuarioPrincipal;
+	public void setContaPrincipal(Conta usuarioPrincipal) {
+		this.contaPrincipal = usuarioPrincipal;
 	}
 
 	public Imagem getLogomarca() {
@@ -136,7 +163,7 @@ public class Cliente extends BasePersistEntity<Long> implements ClienteAutentica
 		int result = 1;
 		result = prime
 				* result
-				+ ((usuarioPrincipal == null) ? 0 : usuarioPrincipal.hashCode());
+				+ ((contaPrincipal == null) ? 0 : contaPrincipal.hashCode());
 		return result;
 	}
 
@@ -149,10 +176,10 @@ public class Cliente extends BasePersistEntity<Long> implements ClienteAutentica
 		if (getClass() != obj.getClass())
 			return false;
 		Cliente other = (Cliente) obj;
-		if (usuarioPrincipal == null) {
-			if (other.usuarioPrincipal != null)
+		if (contaPrincipal == null) {
+			if (other.contaPrincipal != null)
 				return false;
-		} else if (!usuarioPrincipal.equals(other.usuarioPrincipal))
+		} else if (!contaPrincipal.equals(other.contaPrincipal))
 			return false;
 		return true;
 	}
@@ -173,12 +200,12 @@ public class Cliente extends BasePersistEntity<Long> implements ClienteAutentica
 		this.categorias = categorias;
 	}
 
-	public Set<UsuarioCliente> getUsuarios() {
-		return usuarios;
+	public Set<Conta> getConta() {
+		return conta;
 	}
 
-	public void setUsuarios(Set<UsuarioCliente> usuarios) {
-		this.usuarios = usuarios;
+	public void setConta(Set<Conta> usuarios) {
+		this.conta = usuarios;
 	}
 
 	public ArrayList<Telefone> getTelefones() {
@@ -195,6 +222,14 @@ public class Cliente extends BasePersistEntity<Long> implements ClienteAutentica
 
 	public void setClassificados(ArrayList<Classificado> classificados) {
 		this.classificados = classificados;
+	}
+
+	public ArrayList<Servico> getServicos() {
+		return servicos;
+	}
+
+	public void setServicos(ArrayList<Servico> servicos) {
+		this.servicos = servicos;
 	}
 	
 

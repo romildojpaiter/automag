@@ -1,14 +1,9 @@
-package br.com.automag.entity.usuarios;
-
-import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
+package br.com.automag.entity.veiculos;
 
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
-@Entity
-public class Servico extends BasePersistEntity<Long> {
+public class ItemOpcional extends BasePersistEntity<Long>{
 
-	@NotNull
 	private String nome;
 
 	public String getNome() {
@@ -35,7 +30,7 @@ public class Servico extends BasePersistEntity<Long> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Servico other = (Servico) obj;
+		ItemOpcional other = (ItemOpcional) obj;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;

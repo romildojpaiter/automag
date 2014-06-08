@@ -10,7 +10,7 @@ import javax.persistence.Enumerated;
 import br.com.automag.dominio.DominioTipoCliente.DOMINIO_TIPO_CLIENTE;
 import br.com.automag.dominio.DominioTipoLoja.DOMINIO_TIPO_LOJA;
 import br.com.automag.entity.deprecated.old.ImagemGenerica;
-import br.com.automag.entity.deprecated.old.Veiculo;
+import br.com.automag.entity.deprecated.veiculos.Veiculo;
 
 @Entity
 public class Loja extends Cliente implements ClienteAutenticavel {
