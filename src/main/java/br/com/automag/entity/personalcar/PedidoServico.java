@@ -3,17 +3,24 @@ package br.com.automag.entity.personalcar;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
 import br.com.automag.entity.usuarios.Pessoa;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
+@Entity
 public class PedidoServico extends BasePersistEntity<Long> {
 
+	@NotNull
 	private String descricaoServico;
 
 	@Column(columnDefinition="character(3) default NAO")
@@ -22,9 +29,14 @@ public class PedidoServico extends BasePersistEntity<Long> {
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAtendimento;
-
+	
+	@ManyToOne
+	@JoinColumn(name="idPessoa", nullable=false, 
+		updatable=false, insertable=false)
 	private Pessoa pessoa;
 
+	@OneToOne
+	@JoinColumn(name="idAtendimento")
 	private Atendimento atendimento;
 
 	@Override

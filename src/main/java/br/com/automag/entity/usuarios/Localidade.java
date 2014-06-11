@@ -2,10 +2,17 @@ package br.com.automag.entity.usuarios;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.ListIndexBase;
 
 import br.com.automag.dominio.DominioEstado.DOMINIO_ESTADO;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
@@ -19,6 +26,11 @@ public class Localidade extends BasePersistEntity<Long> {
 	@Enumerated(EnumType.STRING)
 	private DOMINIO_ESTADO estado;
 
+	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@ListIndexBase(value=1)
+	@JoinTable(name = "localidade_clientes", 
+		joinColumns = @JoinColumn(name = "idLocalidade"), 
+		inverseJoinColumns = @JoinColumn(name = "idClientes", unique = false))
 	private Set<Cliente> clientes;
 
 	public String getMunicipio() {

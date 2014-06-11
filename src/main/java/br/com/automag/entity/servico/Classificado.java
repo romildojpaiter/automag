@@ -1,4 +1,4 @@
-package br.com.automag.entity.usuarios;
+package br.com.automag.entity.servico;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

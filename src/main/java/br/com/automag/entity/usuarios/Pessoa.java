@@ -1,22 +1,26 @@
 package br.com.automag.entity.usuarios;
 
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.ListIndexBase;
 import org.hibernate.validator.constraints.Email;
 
 import br.com.automag.dominio.DominioSexo.DOMINIO_SEXO;
 import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
-import br.com.automag.entity.deprecated.servicos.PedidoServico;
+import br.com.automag.entity.personalcar.PedidoServico;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
@@ -50,8 +54,12 @@ public class Pessoa extends BasePersistEntity<Long> {
 	@Enumerated(EnumType.STRING)
 	private DOMINIO_SIM_NAO concordaTermosDeUso;
 
-	
-	private ArrayList<PedidoServico> pedidosDeServicos;
+	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
+	@ListIndexBase(value=1)
+	@JoinTable(name = "pessoa_pedidoservicos", 
+		joinColumns = @JoinColumn(name = "idPessoa"), 
+		inverseJoinColumns = @JoinColumn(name = "idPedidoServico", unique = false))
+	private List<PedidoServico> pedidosDeServicos;
 
 	@OneToOne
 	@JoinColumn(name="cliente_id")
@@ -210,6 +218,14 @@ public class Pessoa extends BasePersistEntity<Long> {
 		if (sexo != other.sexo)
 			return false;
 		return true;
+	}
+
+	public List<PedidoServico> getPedidosDeServicos() {
+		return pedidosDeServicos;
+	}
+
+	public void setPedidosDeServicos(List<PedidoServico> pedidosDeServicos) {
+		this.pedidosDeServicos = pedidosDeServicos;
 	}
 	
 	

@@ -2,6 +2,8 @@ package br.com.automag.paiter.core.entity.portalcom;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
@@ -29,6 +31,7 @@ public class Usuario extends BasePersistEntity<Long> {
 	@Transient
 	private String passwordTemp;
 
+	@Enumerated(EnumType.STRING)
 	private DOMINIO_PERFIL_USUARIO perfil;
 
 	public String getNome() {

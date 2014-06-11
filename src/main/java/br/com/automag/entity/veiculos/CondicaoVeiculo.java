@@ -11,7 +11,7 @@ import br.com.automag.paiter.core.entity.BasePersistEntity;
 @Entity
 public class CondicaoVeiculo extends BasePersistEntity<Long>{
 
-	@OneToOne(mappedBy="condicaoveiculo_id")
+	@OneToOne(mappedBy="condicaoVeiculo")
 	private Veiculo veiculo;
 	
 	@Enumerated(EnumType.STRING)

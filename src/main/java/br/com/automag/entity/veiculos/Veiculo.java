@@ -2,6 +2,7 @@ package br.com.automag.entity.veiculos;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -60,26 +61,24 @@ public class Veiculo extends BasePersistEntity<Long> {
 	@Column(columnDefinition="TEXT")
 	private String observacao;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataPublicacao;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
 	@ListIndexBase(value=1)
 	@JoinTable(name = "veiculo_itensopcionais", 
 		joinColumns = @JoinColumn(name = "idVeiculo"), 
 		inverseJoinColumns = @JoinColumn(name = "idItemOpcional", unique = false))
-	private ArrayList<ItemOpcional> itensOpcionais;
+	private List<ItemOpcional> itensOpcionais;
 
 	@OneToOne
-	@JoinColumn(name="condicaoveiculo_id")
-	private CondicaoVeiculo condicaoCarro;
+	@JoinColumn(name="idCondicaoVeiculo")
+	private CondicaoVeiculo condicaoVeiculo;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
 	@ListIndexBase(value=1)
 	@JoinTable(name = "veiculo_imagens", 
 		joinColumns = @JoinColumn(name = "idVeiculo"), 
 		inverseJoinColumns = @JoinColumn(name = "idImagem", unique = false))	
-	private ArrayList<Imagem> imagens;
+	private List<Imagem> imagens;
 
 	@ManyToOne
 	@JoinColumn(name="cor_id")
@@ -103,6 +102,12 @@ public class Veiculo extends BasePersistEntity<Long> {
 	@Enumerated(EnumType.STRING)
 	private DOMINIO_TIPO_COMBUSTIVEL combustivel;
 	
+	/*
+	 * Informações de Publicações
+	 */
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataPublicacao;
+
 	@Enumerated(EnumType.STRING)
 	private DOMINIO_SIM_NAO publicado;
 	
@@ -199,12 +204,12 @@ public class Veiculo extends BasePersistEntity<Long> {
 		this.cliente = cliente;
 	}
 
-	public CondicaoVeiculo getCondicaoCarro() {
-		return condicaoCarro;
+	public CondicaoVeiculo getCondicaoVeiculo() {
+		return condicaoVeiculo;
 	}
 
-	public void setCondicaoCarro(CondicaoVeiculo condicaoCarro) {
-		this.condicaoCarro = condicaoCarro;
+	public void setCondicaoVeiculo(CondicaoVeiculo condicaoCarro) {
+		this.condicaoVeiculo = condicaoCarro;
 	}
 
 	public Cor getCor() {
@@ -285,7 +290,7 @@ public class Veiculo extends BasePersistEntity<Long> {
 		result = prime * result
 				+ ((combustivel == null) ? 0 : combustivel.hashCode());
 		result = prime * result
-				+ ((condicaoCarro == null) ? 0 : condicaoCarro.hashCode());
+				+ ((condicaoVeiculo == null) ? 0 : condicaoVeiculo.hashCode());
 		result = prime * result + ((cor == null) ? 0 : cor.hashCode());
 		result = prime * result
 				+ ((dataPublicacao == null) ? 0 : dataPublicacao.hashCode());
@@ -339,10 +344,10 @@ public class Veiculo extends BasePersistEntity<Long> {
 			return false;
 		if (combustivel != other.combustivel)
 			return false;
-		if (condicaoCarro == null) {
-			if (other.condicaoCarro != null)
+		if (condicaoVeiculo == null) {
+			if (other.condicaoVeiculo != null)
 				return false;
-		} else if (!condicaoCarro.equals(other.condicaoCarro))
+		} else if (!condicaoVeiculo.equals(other.condicaoVeiculo))
 			return false;
 		if (cor == null) {
 			if (other.cor != null)
@@ -402,22 +407,22 @@ public class Veiculo extends BasePersistEntity<Long> {
 		return true;
 	}
 
-	public ArrayList<ItemOpcional> getItensOpcionais() {
+	public List<ItemOpcional> getItensOpcionais() {
 		return itensOpcionais;
 	}
 
-	public void setItensOpcionais(ArrayList<ItemOpcional> itensOpcionais) {
+	public void setItensOpcionais(List<ItemOpcional> itensOpcionais) {
 		this.itensOpcionais = itensOpcionais;
 	}
 
-	public ArrayList<Imagem> getImagens() {
+	public List<Imagem> getImagens() {
 		return imagens;
 	}
 
-	public void setImagens(ArrayList<Imagem> imagens) {
+	public void setImagens(List<Imagem> imagens) {
 		this.imagens = imagens;
 	}
-	
+
 	
 
 }

@@ -1,12 +1,14 @@
 package br.com.automag.entity.veiculos;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
 
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
 public class Modelo extends BasePersistEntity<Long> {
 
+	@NotNull
 	public String nome;
 
 	public String getNome() {

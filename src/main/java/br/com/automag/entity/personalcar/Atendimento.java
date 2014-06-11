@@ -1,9 +1,14 @@
 package br.com.automag.entity.personalcar;
 
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
+@Entity
 public class Atendimento extends BasePersistEntity<Long> {
-
+	
+	@OneToOne(mappedBy="atendimento")
 	private PedidoServico pedidoServico;
 
 	@Override

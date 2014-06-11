@@ -1,4 +1,4 @@
-package br.com.automag.entity.usuarios;
+package br.com.automag.entity.servico;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;

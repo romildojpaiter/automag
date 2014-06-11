@@ -1,4 +1,4 @@
-package br.com.automag.entity.deprecated.clientes;
+package br.com.automag.paiter.core.entity.portalcom;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
@@ -10,6 +10,14 @@ public class CategoriaCliente extends BasePersistEntity<Long> {
 
 	@NotNull
 	private String nome;
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
 	@Override
 	public int hashCode() {
@@ -36,4 +44,6 @@ public class CategoriaCliente extends BasePersistEntity<Long> {
 		return true;
 	}
 	
+	
+
 }

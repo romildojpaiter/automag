@@ -12,7 +12,6 @@ import br.com.automag.paiter.core.entity.BasePersistEntity;
 @Entity
 public class Conta extends BasePersistEntity<Long> {
 	
-	
 	@Column(unique=true, updatable=false, nullable=false)
 	private String login;
 
@@ -23,7 +22,7 @@ public class Conta extends BasePersistEntity<Long> {
 	private String temporalPassword;
 	
 	@OneToOne
-	@JoinColumn(name="cliente_id")
+	@JoinColumn(name="idCliente")
 	private Cliente cliente;
 	
 

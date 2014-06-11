@@ -1,6 +1,6 @@
 package br.com.automag.entity.usuarios;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Embedded;
@@ -10,16 +10,20 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.ListIndexBase;
 
 import br.com.automag.dominio.DominioTipoCliente.DOMINIO_TIPO_CLIENTE;
-import br.com.automag.entity.deprecated.old.Imagem;
-import br.com.automag.entity.deprecated.veiculos.Veiculo;
+import br.com.automag.entity.arquivos.Imagem;
+import br.com.automag.entity.servico.Classificado;
+import br.com.automag.entity.servico.Servico;
 import br.com.automag.entity.usuarios.interfaces.ClienteAutenticavel;
+import br.com.automag.entity.veiculos.Veiculo;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
+import br.com.automag.paiter.core.entity.portalcom.CategoriaCliente;
 
 @Entity
 public class Cliente extends BasePersistEntity<Long> implements ClienteAutenticavel {
@@ -27,56 +31,77 @@ public class Cliente extends BasePersistEntity<Long> implements ClienteAutentica
 	@Enumerated(EnumType.STRING)
 	private DOMINIO_TIPO_CLIENTE tipoCliente;
 
+	@OneToOne(mappedBy="cliente")
+	private Pessoa pessoa;
+
+	@Embedded
+	private Endereco endereco;
+
 	@Embedded
 	private PessoaJuridica pessoaJuridica;
 
 	@OneToOne(mappedBy="cliente")
 	private Conta contaPrincipal;
 	
+	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
+	@ListIndexBase(value=1)
+	@JoinTable(name = "cliente_contas", 
+		joinColumns = @JoinColumn(name = "idCliente"), 
+		inverseJoinColumns = @JoinColumn(name = "idConta", unique = false))
 	private Set<Conta> conta;
-
-	@OneToOne(mappedBy="cliente")
-	private Pessoa pessoa;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
 	@ListIndexBase(value=1)
 	@JoinTable(name = "cliente_veiculos", 
 		joinColumns = @JoinColumn(name = "idCliente"), 
 		inverseJoinColumns = @JoinColumn(name = "idVeiculos", unique = false))
-	private ArrayList<Veiculo> veiculos;
+	private List<Veiculo> veiculos;
 	
-	
+	@ManyToOne
+	@JoinColumn(name="idLogomarca",
+		nullable=false,
+		insertable=true)	
 	private Imagem logomarca;
-
+	
+	@ManyToOne
+	@JoinColumn(name="idLocalidade",
+		nullable=false,
+		insertable=true)
 	private Localidade localidade;
-	
-	@Embedded
-	private Endereco endereco;
 
-	
-	private ArrayList<Servico> servicos;
+	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
+	@ListIndexBase(value=1)
+	@JoinTable(name = "cliente_servicos", 
+		joinColumns = @JoinColumn(name = "idCliente"), 
+		inverseJoinColumns = @JoinColumn(name = "idServico", unique = false))
+	private List<Servico> servicos;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
 	@ListIndexBase(value=1)
-	@JoinTable(name = "cliente_categoria", 
-	joinColumns = @JoinColumn(name = "idCliente"), 
-	inverseJoinColumns = @JoinColumn(name = "idCategoria", unique = false))
-	private ArrayList<CategoriaCliente> categorias;
+	@JoinTable(name = "cliente_categorias", 
+		joinColumns = @JoinColumn(name = "idCliente"), 
+		inverseJoinColumns = @JoinColumn(name = "idCategoria", unique = false))
+	private List<CategoriaCliente> categorias;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
 	@ListIndexBase(value=1)
 	@JoinTable(name = "cliente_telefones", 
-	joinColumns = @JoinColumn(name = "idCliente"), 
-	inverseJoinColumns = @JoinColumn(name = "idTelefone", unique = false))
-	private ArrayList<Telefone> telefones;
+		joinColumns = @JoinColumn(name = "idCliente"), 
+		inverseJoinColumns = @JoinColumn(name = "idTelefone", unique = false))
+	private List<Telefone> telefones;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
 	@ListIndexBase(value=1)
 	@JoinTable(name = "cliente_classificados", 
 		joinColumns = @JoinColumn(name = "idCliente"), 
 		inverseJoinColumns = @JoinColumn(name = "idClassificado", unique = false))
-	private ArrayList<Classificado> classificados;
+	private List<Classificado> classificados;
 
+	/*
+	 *  Metódos da Classe
+	 */
+	
+	
 	public String gerarMetadadaServicos() {
 		return null;
 	}
@@ -184,53 +209,52 @@ public class Cliente extends BasePersistEntity<Long> implements ClienteAutentica
 		return true;
 	}
 
-	public ArrayList<Veiculo> getVeiculos() {
-		return veiculos;
-	}
-
-	public void setVeiculos(ArrayList<Veiculo> veiculos) {
-		this.veiculos = veiculos;
-	}
-
-	public ArrayList<CategoriaCliente> getCategorias() {
-		return categorias;
-	}
-
-	public void setCategorias(ArrayList<CategoriaCliente> categorias) {
-		this.categorias = categorias;
-	}
-
 	public Set<Conta> getConta() {
 		return conta;
 	}
 
-	public void setConta(Set<Conta> usuarios) {
-		this.conta = usuarios;
+	public void setConta(Set<Conta> conta) {
+		this.conta = conta;
 	}
 
-	public ArrayList<Telefone> getTelefones() {
-		return telefones;
+	public List<Veiculo> getVeiculos() {
+		return veiculos;
 	}
 
-	public void setTelefones(ArrayList<Telefone> telefones) {
-		this.telefones = telefones;
+	public void setVeiculos(List<Veiculo> veiculos) {
+		this.veiculos = veiculos;
 	}
 
-	public ArrayList<Classificado> getClassificados() {
-		return classificados;
-	}
-
-	public void setClassificados(ArrayList<Classificado> classificados) {
-		this.classificados = classificados;
-	}
-
-	public ArrayList<Servico> getServicos() {
+	public List<Servico> getServicos() {
 		return servicos;
 	}
 
-	public void setServicos(ArrayList<Servico> servicos) {
+	public void setServicos(List<Servico> servicos) {
 		this.servicos = servicos;
 	}
-	
+
+	public List<CategoriaCliente> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<CategoriaCliente> categorias) {
+		this.categorias = categorias;
+	}
+
+	public List<Telefone> getTelefones() {
+		return telefones;
+	}
+
+	public void setTelefones(List<Telefone> telefones) {
+		this.telefones = telefones;
+	}
+
+	public List<Classificado> getClassificados() {
+		return classificados;
+	}
+
+	public void setClassificados(List<Classificado> classificados) {
+		this.classificados = classificados;
+	}
 
 }
