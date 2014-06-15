@@ -60,6 +60,38 @@
 			<version>5.1.0.Final</version>
 		</dependency>
 		
+		<!-- JAVA EE configurations -->
+		
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>1.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.annotation</groupId>
+			<artifactId>javax.annotation-api</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>javax.ejb-api</artifactId>
+			<version>3.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.inject</groupId>
+			<artifactId>javax.inject</artifactId>
+			<version>1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.interceptor</groupId>
+			<artifactId>javax.interceptor-api</artifactId>
+			<version>1.2</version>
+		</dependency>
+
 		<!-- Bean Validator API -->
 		
 		<dependency>
@@ -69,7 +101,7 @@
 		</dependency>
 		
 		
-		<!-- CDI Injeção de Depencincia com o Weld -->
+		<!-- CDI com Weld -->
 
 		<dependency>
 			<groupId>org.jboss.weld.servlet</groupId>
@@ -104,6 +136,14 @@
 			<version>2.3</version>
 		</dependency>
 		
+		<!-- Apis para tratamento de Json e XML -->
+		
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.2.4</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.apache.servicemix.bundles</groupId>
 			<artifactId>org.apache.servicemix.bundles.xmlpull</artifactId>
@@ -121,16 +161,6 @@
 			<artifactId>xstream</artifactId>
 			<version>1.4.7</version>
 		</dependency>
-		
-		
-		<!-- Apis para tratamento de Json e XML -->
-		
-<dependency>
-	<groupId>com.google.code.gson</groupId>
-	<artifactId>gson</artifactId>
-	<version>2.2.4</version>
-</dependency>
-
 		
 		
 		<!-- java commons -->
@@ -176,19 +206,37 @@
 		</dependency>
 		
 		<!-- Lib dataBase -->
-<!-- 		
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.hsqldb</groupId>
 			<artifactId>hsqldb</artifactId>
 			<version>2.3.0</version>
-		</dependency>
- -->		
+		</dependency> -->
+				
 		<dependency>
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.1-901-1.jdbc4</version>
 		</dependency>
+
+		<!-- TEMPLATES  -->
 		
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity</artifactId>
+			<version>1.7</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.velocity</groupId>
+			<artifactId>velocity-tools</artifactId>
+			<version>2.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>velocity</groupId>
+			<artifactId>velocity-dep</artifactId>
+			<version>1.4</version>
+		</dependency>		
 		
 
 	</dependencies>

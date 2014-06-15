@@ -1,6 +1,7 @@
 package br.com.automag.entity.veiculos;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class Veiculo extends BasePersistEntity<Long> {
 	private Cliente cliente;
 	
 	@NotNull(message="Informe o preço do veículo")
-	private Long preco;
+	private BigDecimal preco;
 
 	@NotNull
 	private String anoFabricacao;
@@ -106,7 +107,7 @@ public class Veiculo extends BasePersistEntity<Long> {
 	 * Informações de Publicações
 	 */
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dataPublicacao;
+	private Calendar dataPublicacao;
 
 	@Enumerated(EnumType.STRING)
 	private DOMINIO_SIM_NAO publicado;
@@ -140,13 +141,6 @@ public class Veiculo extends BasePersistEntity<Long> {
 		this.modelo = modelo;
 	}
 
-	public Long getPreco() {
-		return preco;
-	}
-
-	public void setPreco(Long preco) {
-		this.preco = preco;
-	}
 
 	public String getAnoFabricacao() {
 		return anoFabricacao;
@@ -186,14 +180,6 @@ public class Veiculo extends BasePersistEntity<Long> {
 
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
-	}
-
-	public Date getDataPublicacao() {
-		return dataPublicacao;
-	}
-
-	public void setDataPublicacao(Date dataPublicacao) {
-		this.dataPublicacao = dataPublicacao;
 	}
 
 	public Cliente getCliente() {
@@ -423,6 +409,20 @@ public class Veiculo extends BasePersistEntity<Long> {
 		this.imagens = imagens;
 	}
 
-	
+	public BigDecimal getPreco() {
+		return preco;
+	}
+
+	public void setPreco(BigDecimal preco) {
+		this.preco = preco;
+	}
+
+	public Calendar getDataPublicacao() {
+		return dataPublicacao;
+	}
+
+	public void setDataPublicacao(Calendar dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
+	}
 
 }

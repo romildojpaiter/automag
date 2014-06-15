@@ -1,7 +1,7 @@
 package br.com.automag.paiter.core.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -24,7 +24,7 @@ public abstract class BasePersistEntity<ID extends Serializable> {
 	protected ID id;
 	
 	@Temporal(TemporalType.DATE)
-	protected Date dataCadastro;
+	protected Calendar dataCadastro;
 	
 	@Enumerated(EnumType.STRING)
 	protected DOMINIO_SIM_NAO removido;
@@ -66,13 +66,20 @@ public abstract class BasePersistEntity<ID extends Serializable> {
 	@Override
 	public abstract boolean equals(Object objeto);
 
-	public Date getDataCadastro() {
+	public Calendar getDataCadastro() {
 		return dataCadastro;
 	}
 
-	public void setDataCadastro(Date dataCadastro) {
+	public void setDataCadastro(Calendar dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
-	
+
+	public DOMINIO_ATIVO_INATIVO getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(DOMINIO_ATIVO_INATIVO situacao) {
+		this.situacao = situacao;
+	}
 	
 }
