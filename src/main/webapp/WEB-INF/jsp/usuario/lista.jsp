@@ -10,8 +10,10 @@
 	<c:forEach items="${usuarioList}" var="usuario">
 		<li>${usuario.nome} - ${usuario.email}
 			<a href="${linkTo[UsuarioController].editar}?idUsuario=${usuario.id}">Modificar</a> 
+			<a href="${linkTo[UsuarioController].remover}?idUsuario=${usuario.id}">Remover</a> 
 		</li>
 	</c:forEach>
-	
+	<br/>
+	<a href="${linkTo[UsuarioController].formulario}">Adicionar Novo</a> 	
 </body>
 </html>

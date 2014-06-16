@@ -28,8 +28,9 @@ public class GenericDAO<PK, T> {
 		}
 	}
 
-	public void update(T entity) {
-		entityManager.merge(entity);
+	public T update(T entity) {
+		entityManager.clear();
+		return entityManager.merge(entity);
 	}
 
 	public void delete(T entity) {

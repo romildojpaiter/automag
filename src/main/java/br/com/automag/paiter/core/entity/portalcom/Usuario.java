@@ -4,24 +4,39 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.joda.time.DateTime;
 
 import br.com.automag.dominio.DominioPerfilUsuario.DOMINIO_PERFIL_USUARIO;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
-public class Usuario extends BasePersistEntity<Long> {
+@Where(clause = "removido = 'NAO'")
+@SequenceGenerator(name="usuario_seq",sequenceName="usuario_seq",allocationSize=1)
+public class Usuario extends BasePersistEntity {
 
+	@Id
+	@GeneratedValue(generator="usuario_seq", strategy=GenerationType.SEQUENCE)
+	private Long id;
+	
 	@NotNull
 	private String nome;
 
 	@Email
+	@NotEmpty
 	@Column(nullable=false, unique=true)
 	private String email;
 
+	@NotEmpty
 	@Column(unique=true, nullable=false, updatable=false)
 	private String login;
 
@@ -74,15 +89,34 @@ public class Usuario extends BasePersistEntity<Long> {
 		this.perfil = perfil;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getPasswordTemp() {
+		return passwordTemp;
+	}
+
+	public void setPasswordTemp(String passwordTemp) {
+		this.passwordTemp = passwordTemp;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result
 				+ ((password == null) ? 0 : password.hashCode());
+		result = prime * result
+				+ ((passwordTemp == null) ? 0 : passwordTemp.hashCode());
 		result = prime * result + ((perfil == null) ? 0 : perfil.hashCode());
 		return result;
 	}
@@ -101,6 +135,11 @@ public class Usuario extends BasePersistEntity<Long> {
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
 		if (login == null) {
 			if (other.login != null)
 				return false;
@@ -116,9 +155,19 @@ public class Usuario extends BasePersistEntity<Long> {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
+		if (passwordTemp == null) {
+			if (other.passwordTemp != null)
+				return false;
+		} else if (!passwordTemp.equals(other.passwordTemp))
+			return false;
 		if (perfil != other.perfil)
 			return false;
 		return true;
+	}
+	
+	public String getDataCadastroFormatado(){
+		DateTime dateTime = new DateTime(this.getDataCadastro());
+		return dateTime.getDayOfMonth() + "/" +dateTime.getMonthOfYear() + "/" + dateTime.getYear();
 	}
 
 }

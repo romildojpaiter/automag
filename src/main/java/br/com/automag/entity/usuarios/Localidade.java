@@ -8,17 +8,28 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.ListIndexBase;
+import org.hibernate.annotations.Where;
 
 import br.com.automag.dominio.DominioEstado.DOMINIO_ESTADO;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
-public class Localidade extends BasePersistEntity<Long> {
+@Where(clause = "removido = 'NAO'")
+@SequenceGenerator(name="localidade_seq",sequenceName="localidade_seq",allocationSize=1)
+public class Localidade extends BasePersistEntity{
+	
+	@Id
+	@GeneratedValue(generator="localidade_seq", strategy=GenerationType.SEQUENCE)
+	private Long id;	
 
 	@Column(nullable=false)
 	private String municipio;
@@ -57,13 +68,19 @@ public class Localidade extends BasePersistEntity<Long> {
 		this.clientes = clientes;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((estado == null) ? 0 : estado.hashCode());
-		result = prime * result
-				+ ((municipio == null) ? 0 : municipio.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -76,12 +93,10 @@ public class Localidade extends BasePersistEntity<Long> {
 		if (getClass() != obj.getClass())
 			return false;
 		Localidade other = (Localidade) obj;
-		if (estado != other.estado)
-			return false;
-		if (municipio == null) {
-			if (other.municipio != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!municipio.equals(other.municipio))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}

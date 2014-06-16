@@ -4,13 +4,25 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.annotations.Where;
 
 import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
-public class Classificado extends BasePersistEntity<Long> {
+@Where(clause = "removido = 'NAO'")
+@SequenceGenerator(name="classificado_seq",sequenceName="classificado_seq",allocationSize=1)
+public class Classificado extends BasePersistEntity {
+	
+	@Id
+	@GeneratedValue(generator="classificado_seq", strategy=GenerationType.SEQUENCE)
+	private Long id;
 
 	@NotNull
 	private String titulo;
@@ -46,15 +58,19 @@ public class Classificado extends BasePersistEntity<Long> {
 		this.finalizado = finalizado;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((descricao == null) ? 0 : descricao.hashCode());
-		result = prime * result
-				+ ((finalizado == null) ? 0 : finalizado.hashCode());
-		result = prime * result + ((titulo == null) ? 0 : titulo.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -67,17 +83,10 @@ public class Classificado extends BasePersistEntity<Long> {
 		if (getClass() != obj.getClass())
 			return false;
 		Classificado other = (Classificado) obj;
-		if (descricao == null) {
-			if (other.descricao != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!descricao.equals(other.descricao))
-			return false;
-		if (finalizado != other.finalizado)
-			return false;
-		if (titulo == null) {
-			if (other.titulo != null)
-				return false;
-		} else if (!titulo.equals(other.titulo))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}

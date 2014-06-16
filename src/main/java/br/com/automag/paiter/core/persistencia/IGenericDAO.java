@@ -6,7 +6,7 @@ import javax.persistence.EntityManager;
 
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
-public interface IGenericDAO<T extends BasePersistEntity<Long>> {
+public interface IGenericDAO<T extends BasePersistEntity> {
 	
 	public T save(T entidade);
 	

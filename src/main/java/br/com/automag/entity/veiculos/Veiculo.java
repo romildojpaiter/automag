@@ -2,7 +2,6 @@ package br.com.automag.entity.veiculos;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
@@ -21,6 +23,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.ListIndexBase;
+import org.hibernate.annotations.Where;
 
 import br.com.automag.dominio.DominioMotorizacao.DOMINIO_MOTORIZACAO;
 import br.com.automag.dominio.DominioQuantidadePortas.DOMINIO_QTD_PORTAS;
@@ -31,8 +34,13 @@ import br.com.automag.entity.usuarios.Cliente;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
+@Where(clause = "removido = 'NAO'")
 @SequenceGenerator(name="veiculo_seq",sequenceName="veiculo_seq",allocationSize=1)
-public class Veiculo extends BasePersistEntity<Long> {
+public class Veiculo extends BasePersistEntity {
+	
+	@Id
+	@GeneratedValue(generator="veiculo_seq", strategy=GenerationType.SEQUENCE)
+	private Long id;	
 	
 	@ManyToOne
 	@JoinColumn(name="marca_id")
@@ -262,136 +270,6 @@ public class Veiculo extends BasePersistEntity<Long> {
 		this.publicado = publicado;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((anoFabricacao == null) ? 0 : anoFabricacao.hashCode());
-		result = prime * result
-				+ ((anoModelo == null) ? 0 : anoModelo.hashCode());
-		result = prime * result
-				+ ((certificado == null) ? 0 : certificado.hashCode());
-		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
-		result = prime * result
-				+ ((combustivel == null) ? 0 : combustivel.hashCode());
-		result = prime * result
-				+ ((condicaoVeiculo == null) ? 0 : condicaoVeiculo.hashCode());
-		result = prime * result + ((cor == null) ? 0 : cor.hashCode());
-		result = prime * result
-				+ ((dataPublicacao == null) ? 0 : dataPublicacao.hashCode());
-		result = prime * result
-				+ ((finalPlaca == null) ? 0 : finalPlaca.hashCode());
-		result = prime * result + ((imagens == null) ? 0 : imagens.hashCode());
-		result = prime * result + ((marca == null) ? 0 : marca.hashCode());
-		result = prime * result + ((modelo == null) ? 0 : modelo.hashCode());
-		result = prime * result
-				+ ((motorizacao == null) ? 0 : motorizacao.hashCode());
-		result = prime * result
-				+ ((observacao == null) ? 0 : observacao.hashCode());
-		result = prime * result + ((portas == null) ? 0 : portas.hashCode());
-		result = prime * result + ((preco == null) ? 0 : preco.hashCode());
-		result = prime * result
-				+ ((publicado == null) ? 0 : publicado.hashCode());
-		result = prime * result
-				+ ((quilometragem == null) ? 0 : quilometragem.hashCode());
-		result = prime * result
-				+ ((tipoCombustivel == null) ? 0 : tipoCombustivel.hashCode());
-		result = prime * result
-				+ ((tipoVeiculo == null) ? 0 : tipoVeiculo.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Veiculo other = (Veiculo) obj;
-		if (anoFabricacao == null) {
-			if (other.anoFabricacao != null)
-				return false;
-		} else if (!anoFabricacao.equals(other.anoFabricacao))
-			return false;
-		if (anoModelo == null) {
-			if (other.anoModelo != null)
-				return false;
-		} else if (!anoModelo.equals(other.anoModelo))
-			return false;
-		if (certificado != other.certificado)
-			return false;
-		if (cliente == null) {
-			if (other.cliente != null)
-				return false;
-		} else if (!cliente.equals(other.cliente))
-			return false;
-		if (combustivel != other.combustivel)
-			return false;
-		if (condicaoVeiculo == null) {
-			if (other.condicaoVeiculo != null)
-				return false;
-		} else if (!condicaoVeiculo.equals(other.condicaoVeiculo))
-			return false;
-		if (cor == null) {
-			if (other.cor != null)
-				return false;
-		} else if (!cor.equals(other.cor))
-			return false;
-		if (dataPublicacao == null) {
-			if (other.dataPublicacao != null)
-				return false;
-		} else if (!dataPublicacao.equals(other.dataPublicacao))
-			return false;
-		if (finalPlaca == null) {
-			if (other.finalPlaca != null)
-				return false;
-		} else if (!finalPlaca.equals(other.finalPlaca))
-			return false;
-		if (imagens == null) {
-			if (other.imagens != null)
-				return false;
-		} else if (!imagens.equals(other.imagens))
-			return false;
-		if (marca == null) {
-			if (other.marca != null)
-				return false;
-		} else if (!marca.equals(other.marca))
-			return false;
-		if (modelo == null) {
-			if (other.modelo != null)
-				return false;
-		} else if (!modelo.equals(other.modelo))
-			return false;
-		if (motorizacao != other.motorizacao)
-			return false;
-		if (observacao == null) {
-			if (other.observacao != null)
-				return false;
-		} else if (!observacao.equals(other.observacao))
-			return false;
-		if (portas != other.portas)
-			return false;
-		if (preco == null) {
-			if (other.preco != null)
-				return false;
-		} else if (!preco.equals(other.preco))
-			return false;
-		if (publicado != other.publicado)
-			return false;
-		if (quilometragem == null) {
-			if (other.quilometragem != null)
-				return false;
-		} else if (!quilometragem.equals(other.quilometragem))
-			return false;
-		if (tipoCombustivel != other.tipoCombustivel)
-			return false;
-		if (tipoVeiculo != other.tipoVeiculo)
-			return false;
-		return true;
-	}
 
 	public List<ItemOpcional> getItensOpcionais() {
 		return itensOpcionais;
@@ -423,6 +301,88 @@ public class Veiculo extends BasePersistEntity<Long> {
 
 	public void setDataPublicacao(Calendar dataPublicacao) {
 		this.dataPublicacao = dataPublicacao;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((anoFabricacao == null) ? 0 : anoFabricacao.hashCode());
+		result = prime * result
+				+ ((anoModelo == null) ? 0 : anoModelo.hashCode());
+		result = prime * result + ((cliente == null) ? 0 : cliente.hashCode());
+		result = prime * result
+				+ ((combustivel == null) ? 0 : combustivel.hashCode());
+		result = prime * result + ((cor == null) ? 0 : cor.hashCode());
+		result = prime * result
+				+ ((finalPlaca == null) ? 0 : finalPlaca.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((marca == null) ? 0 : marca.hashCode());
+		result = prime * result + ((modelo == null) ? 0 : modelo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Veiculo other = (Veiculo) obj;
+		if (anoFabricacao == null) {
+			if (other.anoFabricacao != null)
+				return false;
+		} else if (!anoFabricacao.equals(other.anoFabricacao))
+			return false;
+		if (anoModelo == null) {
+			if (other.anoModelo != null)
+				return false;
+		} else if (!anoModelo.equals(other.anoModelo))
+			return false;
+		if (cliente == null) {
+			if (other.cliente != null)
+				return false;
+		} else if (!cliente.equals(other.cliente))
+			return false;
+		if (combustivel != other.combustivel)
+			return false;
+		if (cor == null) {
+			if (other.cor != null)
+				return false;
+		} else if (!cor.equals(other.cor))
+			return false;
+		if (finalPlaca == null) {
+			if (other.finalPlaca != null)
+				return false;
+		} else if (!finalPlaca.equals(other.finalPlaca))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (marca == null) {
+			if (other.marca != null)
+				return false;
+		} else if (!marca.equals(other.marca))
+			return false;
+		if (modelo == null) {
+			if (other.modelo != null)
+				return false;
+		} else if (!modelo.equals(other.modelo))
+			return false;
+		return true;
 	}
 
 }

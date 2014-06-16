@@ -1,12 +1,10 @@
 package br.com.automag.paiter.core.entity;
 
-import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
@@ -17,11 +15,8 @@ import br.com.automag.dominio.DominioAtivoInativo.DOMINIO_ATIVO_INATIVO;
 import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
 
 @MappedSuperclass
-public abstract class BasePersistEntity<ID extends Serializable> {
+public abstract class BasePersistEntity {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	protected ID id;
 	
 	@Temporal(TemporalType.DATE)
 	protected Calendar dataCadastro;
@@ -32,16 +27,9 @@ public abstract class BasePersistEntity<ID extends Serializable> {
 	@Enumerated(EnumType.STRING)
 	protected DOMINIO_ATIVO_INATIVO situacao;
 	
-	@Version
-	protected Integer version;
-
-	public ID getId(){
-		return this.id;
-	}
+	public abstract Long getId();
 	
-	public void setId(ID id){
-		this.id = id;
-	}
+	public abstract void setId(Long id);
 	
 	public DOMINIO_SIM_NAO getRemovido(){
 		return this.removido;
@@ -49,15 +37,6 @@ public abstract class BasePersistEntity<ID extends Serializable> {
 	
 	public void setRemovido(DOMINIO_SIM_NAO removido){
 		this.removido = removido;
-		
-	}
-
-	public Integer getVersion() {
-		return version;
-	}
-
-	public void setVersion(Integer version) {
-		this.version = version;
 	}
 
 	@Override

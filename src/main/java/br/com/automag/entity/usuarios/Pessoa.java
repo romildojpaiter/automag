@@ -7,15 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.ListIndexBase;
+import org.hibernate.annotations.Where;
 import org.hibernate.validator.constraints.Email;
 
 import br.com.automag.dominio.DominioSexo.DOMINIO_SEXO;
@@ -24,8 +29,14 @@ import br.com.automag.entity.personalcar.PedidoServico;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
-public class Pessoa extends BasePersistEntity<Long> {
+@Where(clause = "removido = 'NAO'")
+@SequenceGenerator(name="pessoa_seq",sequenceName="pessoa_seq",allocationSize=1)
+public class Pessoa extends BasePersistEntity {
 
+	@Id
+	@GeneratedValue(generator="pessoa_seq", strategy=GenerationType.SEQUENCE)
+	private Long id;
+	
 	@NotNull
 	private String nome;
 
@@ -146,29 +157,27 @@ public class Pessoa extends BasePersistEntity<Long> {
 		this.cliente = cliente;
 	}
 
+	public List<PedidoServico> getPedidosDeServicos() {
+		return pedidosDeServicos;
+	}
+
+	public void setPedidosDeServicos(List<PedidoServico> pedidosDeServicos) {
+		this.pedidosDeServicos = pedidosDeServicos;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime
-				* result
-				+ ((aceitaReceberEmail == null) ? 0 : aceitaReceberEmail
-						.hashCode());
-		result = prime
-				* result
-				+ ((concordaTermosDeUso == null) ? 0 : concordaTermosDeUso
-						.hashCode());
-		result = prime * result
-				+ ((dataEmissaoRG == null) ? 0 : dataEmissaoRG.hashCode());
-		result = prime * result
-				+ ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
-		result = prime * result
-				+ ((documentoCPF == null) ? 0 : documentoCPF.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result
-				+ ((registroGeral == null) ? 0 : registroGeral.hashCode());
-		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
@@ -181,51 +190,12 @@ public class Pessoa extends BasePersistEntity<Long> {
 		if (getClass() != obj.getClass())
 			return false;
 		Pessoa other = (Pessoa) obj;
-		if (aceitaReceberEmail != other.aceitaReceberEmail)
-			return false;
-		if (concordaTermosDeUso != other.concordaTermosDeUso)
-			return false;
-		if (dataEmissaoRG == null) {
-			if (other.dataEmissaoRG != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!dataEmissaoRG.equals(other.dataEmissaoRG))
-			return false;
-		if (dataNascimento == null) {
-			if (other.dataNascimento != null)
-				return false;
-		} else if (!dataNascimento.equals(other.dataNascimento))
-			return false;
-		if (documentoCPF == null) {
-			if (other.documentoCPF != null)
-				return false;
-		} else if (!documentoCPF.equals(other.documentoCPF))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (registroGeral == null) {
-			if (other.registroGeral != null)
-				return false;
-		} else if (!registroGeral.equals(other.registroGeral))
-			return false;
-		if (sexo != other.sexo)
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
-	}
-
-	public List<PedidoServico> getPedidosDeServicos() {
-		return pedidosDeServicos;
-	}
-
-	public void setPedidosDeServicos(List<PedidoServico> pedidosDeServicos) {
-		this.pedidosDeServicos = pedidosDeServicos;
 	}
 	
 	

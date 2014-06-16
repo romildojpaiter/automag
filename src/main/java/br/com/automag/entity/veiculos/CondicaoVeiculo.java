@@ -3,13 +3,25 @@ package br.com.automag.entity.veiculos;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+
+import org.hibernate.annotations.Where;
 
 import br.com.automag.dominio.DominioTipoCondicao.DOMINIO_TIPO_CONDICAO;
 import br.com.automag.paiter.core.entity.BasePersistEntity;
 
 @Entity
-public class CondicaoVeiculo extends BasePersistEntity<Long>{
+@Where(clause = "removido = 'NAO'")
+@SequenceGenerator(name="condicao_veiculo_seq",sequenceName="condicao_veiculo_seq",allocationSize=1)
+public class CondicaoVeiculo extends BasePersistEntity{
+	
+	@Id
+	@GeneratedValue(generator="condicao_veiculo_seq", strategy=GenerationType.SEQUENCE)
+	private Long id;
 
 	@OneToOne(mappedBy="condicaoVeiculo")
 	private Veiculo veiculo;
@@ -91,20 +103,28 @@ public class CondicaoVeiculo extends BasePersistEntity<Long>{
 		this.bancos = bancos;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Veiculo getVeiculo() {
+		return veiculo;
+	}
+
+	public void setVeiculo(Veiculo veiculo) {
+		this.veiculo = veiculo;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((bancos == null) ? 0 : bancos.hashCode());
-		result = prime * result
-				+ ((exterior == null) ? 0 : exterior.hashCode());
-		result = prime * result + ((freios == null) ? 0 : freios.hashCode());
-		result = prime * result
-				+ ((interior == null) ? 0 : interior.hashCode());
-		result = prime * result + ((motor == null) ? 0 : motor.hashCode());
-		result = prime * result + ((pneus == null) ? 0 : pneus.hashCode());
-		result = prime * result
-				+ ((suspensao == null) ? 0 : suspensao.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((veiculo == null) ? 0 : veiculo.hashCode());
 		return result;
 	}
 
@@ -117,19 +137,15 @@ public class CondicaoVeiculo extends BasePersistEntity<Long>{
 		if (getClass() != obj.getClass())
 			return false;
 		CondicaoVeiculo other = (CondicaoVeiculo) obj;
-		if (bancos != other.bancos)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
-		if (exterior != other.exterior)
-			return false;
-		if (freios != other.freios)
-			return false;
-		if (interior != other.interior)
-			return false;
-		if (motor != other.motor)
-			return false;
-		if (pneus != other.pneus)
-			return false;
-		if (suspensao != other.suspensao)
+		if (veiculo == null) {
+			if (other.veiculo != null)
+				return false;
+		} else if (!veiculo.equals(other.veiculo))
 			return false;
 		return true;
 	}
