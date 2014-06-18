@@ -7,6 +7,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
@@ -22,6 +24,14 @@ import br.com.automag.paiter.core.entity.BasePersistEntity;
 @Entity
 @Where(clause = "removido = 'NAO'")
 @SequenceGenerator(name="usuario_seq",sequenceName="usuario_seq",allocationSize=1)
+@NamedQueries({
+	@NamedQuery(
+			name="findByEmail",
+			query="SELECT usuario FROM Usuario usuario WHERE usuario.email LIKE :email"),
+	@NamedQuery(
+			name="findByLogin",
+			query="SELECT usuario FROM Usuario usuario WHERE usuario.login LIKE :login")
+})
 public class Usuario extends BasePersistEntity {
 
 	@Id
@@ -167,7 +177,7 @@ public class Usuario extends BasePersistEntity {
 	
 	public String getDataCadastroFormatado(){
 		DateTime dateTime = new DateTime(this.getDataCadastro());
-		return dateTime.getDayOfMonth() + "/" +dateTime.getMonthOfYear() + "/" + dateTime.getYear();
+		return dateTime.getYear() + "-" +dateTime.getMonthOfYear() + "-" + dateTime.getDayOfMonth();
 	}
 
 }

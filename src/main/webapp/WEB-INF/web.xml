@@ -22,6 +22,7 @@
 	</resource-env-ref>
 	
 	<!-- configurando o velocity para trabalhar com o vraptor -->
+	<!-- 
 	<servlet>
 	  <servlet-name>velocity</servlet-name>
 	  <servlet-class>
@@ -33,6 +34,7 @@
 	  <servlet-name>velocity</servlet-name>
 	  <url-pattern>*.vm</url-pattern>
 	</servlet-mapping>
+	-->
 	
 	<!-- configura o controlador do VRaptor -->
 	<!-- <filter> <filter-name>vraptor</filter-name> <filter-class>br.com.caelum.vraptor.VRaptor</filter-class> 

@@ -1,10 +1,9 @@
 package br.com.automag.paiter.core.business;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
-
-import org.joda.time.DateTime;
 
 import br.com.automag.dominio.DominioAtivoInativo.DOMINIO_ATIVO_INATIVO;
 import br.com.automag.dominio.DominioPerfilUsuario.DOMINIO_PERFIL_USUARIO;
@@ -28,7 +27,7 @@ public class UsuarioBusiness {
 	}
 	
 	
-	public void grava(Usuario usuario){
+	public void grava(Usuario usuario) throws Exception{
 		try {
 			if(usuario.getId() == null){
 				completaInformcaoUsuario(usuario);
@@ -37,12 +36,12 @@ public class UsuarioBusiness {
 				usuarioDAO.update(usuario);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			throw e;
 		}
 	}
 	
 	private void completaInformcaoUsuario(Usuario usuario) {
-		usuario.setDataCadastro(DateTime.now().toGregorianCalendar());
+		usuario.setDataCadastro(new Date());
 		usuario.setPerfil(DOMINIO_PERFIL_USUARIO.ADMINISTRADOR);
 		usuario.setRemovido(DOMINIO_SIM_NAO.NAO);
 		usuario.setSituacao(DOMINIO_ATIVO_INATIVO.ATIVO);

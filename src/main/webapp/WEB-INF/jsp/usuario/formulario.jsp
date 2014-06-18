@@ -25,7 +25,6 @@
   		<h2>Forulário de cadastro de Clientes</h2>
   		
   		<input type="hidden" name="usuario.id" value="${usuario.id}"/>
-  		<input type="hidden" name="usuario.dataCadastro" value="${usuario.dataCadastroFormatado}"/>
   		<input type="hidden" name="usuario.perfil" value="${usuario.perfil}"/>
   		<input type="hidden" name="usuario.removido" value="${usuario.removido}"/>
   		<input type="hidden" name="usuario.situacao" value="${usuario.situacao}"/>

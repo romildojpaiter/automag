@@ -1,15 +1,15 @@
 package br.com.automag.paiter.core.entity;
 
-import java.util.Calendar;
+import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Version;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import br.com.automag.dominio.DominioAtivoInativo.DOMINIO_ATIVO_INATIVO;
 import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
@@ -18,8 +18,9 @@ import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
 public abstract class BasePersistEntity {
 
 	
+	@Column(updatable=false)
 	@Temporal(TemporalType.DATE)
-	protected Calendar dataCadastro;
+	protected Date dataCadastro;
 	
 	@Enumerated(EnumType.STRING)
 	protected DOMINIO_SIM_NAO removido;
@@ -45,11 +46,11 @@ public abstract class BasePersistEntity {
 	@Override
 	public abstract boolean equals(Object objeto);
 
-	public Calendar getDataCadastro() {
+	public Date getDataCadastro() {
 		return dataCadastro;
 	}
 
-	public void setDataCadastro(Calendar dataCadastro) {
+	public void setDataCadastro(Date dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
 
