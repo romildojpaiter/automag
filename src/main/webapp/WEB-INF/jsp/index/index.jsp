@@ -1,10 +1,3 @@
-<!DOCTYPE html>
+<%@ include file="../template/automagTemplate.jsp" %>
 
-<html>
-  <head>
-    <title>Página inicial</title>
-  </head>
-  <body>
-    ${mensagem}
-  </body>
-</html>
+${mensagem}

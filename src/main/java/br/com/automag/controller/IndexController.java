@@ -4,9 +4,7 @@ import javax.inject.Inject;
 
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
-import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.freemarker.FreemarkerView;
 
 @Controller
 public class IndexController {
@@ -23,13 +21,16 @@ public class IndexController {
 	public void home(){
 		result.include("mensagem", "Ola, Vraptor 4!");
 	}
+
 	
+	
+	
+	/*
 	@Path("/indexVelocity")
 	public void indexVelocity(){
 		result.include("mensagem", "Ola, Vraptor 4 com velocity!");
 		result.forwardTo("/index.vm");
 	}
-	
 	
 	@Path("/portalcom/dashboard")
 	@Get
@@ -37,4 +38,5 @@ public class IndexController {
 		result.include("mensagem", "Ola, Vraptor 4 com freemarker");
 		result.use(FreemarkerView.class).withTemplate("dashboard");
 	}
+	*/
 }

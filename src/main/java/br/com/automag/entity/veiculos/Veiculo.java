@@ -31,7 +31,7 @@ import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
 import br.com.automag.dominio.DominioTipoCombustivel.DOMINIO_TIPO_COMBUSTIVEL;
 import br.com.automag.entity.arquivos.Imagem;
 import br.com.automag.entity.usuarios.Cliente;
-import br.com.automag.paiter.core.entity.BasePersistEntity;
+import br.com.paiter.core.entity.BasePersistEntity;
 
 @Entity
 @Where(clause = "removido = 'NAO'")

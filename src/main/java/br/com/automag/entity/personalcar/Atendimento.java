@@ -9,7 +9,7 @@ import javax.persistence.SequenceGenerator;
 
 import org.hibernate.annotations.Where;
 
-import br.com.automag.paiter.core.entity.BasePersistEntity;
+import br.com.paiter.core.entity.BasePersistEntity;
 
 @Entity
 @Where(clause = "removido = 'NAO'")

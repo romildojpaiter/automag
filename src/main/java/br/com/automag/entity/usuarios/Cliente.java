@@ -27,8 +27,8 @@ import br.com.automag.entity.servico.Classificado;
 import br.com.automag.entity.servico.Servico;
 import br.com.automag.entity.usuarios.interfaces.ClienteAutenticavel;
 import br.com.automag.entity.veiculos.Veiculo;
-import br.com.automag.paiter.core.entity.BasePersistEntity;
-import br.com.automag.paiter.core.entity.portalcom.CategoriaCliente;
+import br.com.paiter.core.entity.BasePersistEntity;
+import br.com.paiter.core.entity.portalcom.CategoriaCliente;
 
 @Entity
 @Where(clause = "removido = 'NAO'")

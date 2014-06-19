@@ -20,7 +20,7 @@ import org.hibernate.annotations.ListIndexBase;
 import org.hibernate.annotations.Where;
 
 import br.com.automag.dominio.DominioEstado.DOMINIO_ESTADO;
-import br.com.automag.paiter.core.entity.BasePersistEntity;
+import br.com.paiter.core.entity.BasePersistEntity;
 
 @Entity
 @Where(clause = "removido = 'NAO'")

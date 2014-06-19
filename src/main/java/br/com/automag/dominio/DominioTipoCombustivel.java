@@ -2,7 +2,7 @@ package br.com.automag.dominio;
 
 import org.apache.commons.lang.StringUtils;
 
-import br.com.automag.paiter.core.utils.dominio.BaseDominioInterface;
+import br.com.paiter.core.utils.dominio.BaseDominioInterface;
 
 public class DominioTipoCombustivel {
 	

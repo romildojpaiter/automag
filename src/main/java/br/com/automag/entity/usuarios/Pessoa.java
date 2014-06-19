@@ -26,7 +26,7 @@ import org.hibernate.validator.constraints.Email;
 import br.com.automag.dominio.DominioSexo.DOMINIO_SEXO;
 import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
 import br.com.automag.entity.personalcar.PedidoServico;
-import br.com.automag.paiter.core.entity.BasePersistEntity;
+import br.com.paiter.core.entity.BasePersistEntity;
 
 @Entity
 @Where(clause = "removido = 'NAO'")
