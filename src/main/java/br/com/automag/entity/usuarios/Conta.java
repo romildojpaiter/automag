@@ -37,7 +37,19 @@ public class Conta extends BasePersistEntity {
 	@JoinColumn(name="idCliente")
 	private Cliente cliente;
 	
-
+	public static final Conta GHOST;
+	
+	static {
+		GHOST = new Conta("", "");
+		GHOST.setId(1000l);
+	}	
+	
+	public Conta(String login, String password){
+		this.login = login;
+		this.password = password;
+	}
+	
+	
 	public String getLogin() {
 		return login;
 	}

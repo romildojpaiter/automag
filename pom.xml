@@ -19,7 +19,13 @@
 		<dependency>
 			<groupId>br.com.caelum</groupId>
 			<artifactId>vraptor</artifactId>
-			<version>${vraptor.version}</version><!-- old version 3.5.3 -->
+			<version>${vraptor.version}</version>
+		 <exclusions>
+		  <exclusion>
+		   <artifactId>slf4j-api</artifactId>
+		   <groupId>org.slf4j</groupId>
+		  </exclusion>
+		 </exclusions>
 		</dependency>
 
 		<dependency>
@@ -219,12 +225,30 @@
 		</dependency>
 
 		<!-- Seguranca -->
+
+		<dependency>
+			<groupId>br.com.caelum.vraptor</groupId>
+			<artifactId>vraptor-routes</artifactId>
+			<version>4.0.0-RC3-SNAPSHOT</version>
+		</dependency>
+		
+		<!-- <dependency>
+			<groupId>br.com.caelum.vraptor</groupId>
+			<artifactId>vraptor-simplemail</artifactId>
+			<version>4.0.0-RC2</version>
+		 <exclusions>
+		  <exclusion>
+		   <artifactId>commons-codec</artifactId>
+		   <groupId>commons-codec</groupId>
+		  </exclusion>
+		 </exclusions>
+		</dependency> -->
 		
 		<dependency>
-		    <groupId>br.com.caelum.vraptor</groupId>
-		    <artifactId>vraptor-shiro</artifactId>
-		    <version>4.0.0-beta-1</version> <!-- cheque a versão mais atual -->
-		</dependency>
+			<groupId>br.com.caelum.vraptor</groupId>
+			<artifactId>vraptor-brutauth</artifactId>
+			<version>4.0.0.Final</version>
+		</dependency>				
 		
 		<!-- Freemarker -->		
 		<dependency>
@@ -237,23 +261,12 @@
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
 			<version>2.3.20</version>
-		</dependency>	    
-	    
-	    
-	    <!-- Tiles -->
-	    
-		<!-- <dependency>
-		  <groupId>org.apache.tiles</groupId>
-		  <artifactId>tiles-extras</artifactId>
-		  <version>3.0.4</version>
-		</dependency>	    
-		
-		<dependency>
-		    <groupId>org.apache.tiles</groupId>
-		    <artifactId>tiles-jsp</artifactId>
-		    <version>3.0.4</version>
-		</dependency> -->	    
-
+		</dependency>
+	 <dependency>
+	  <groupId>commons-codec</groupId>
+	  <artifactId>commons-codec</artifactId>
+	  <version>1.6</version>
+	 </dependency>
 	</dependencies>
 
 	<build>

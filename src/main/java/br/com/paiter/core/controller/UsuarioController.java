@@ -9,14 +9,12 @@ import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Result;
-import br.com.caelum.vraptor.security.annotation.Secured;
 import br.com.caelum.vraptor.validator.I18nMessage;
 import br.com.caelum.vraptor.validator.Message;
 import br.com.paiter.core.business.UsuarioBusiness;
 import br.com.paiter.core.entity.portalcom.Usuario;
 import br.com.paiter.core.validators.UsuarioValidator;
 
-@Secured
 @Controller
 public class UsuarioController {
 	
@@ -24,6 +22,7 @@ public class UsuarioController {
 	private Result result;
 	private UsuarioValidator validator;
 
+	@Deprecated
 	public UsuarioController() {
 	}
 
@@ -33,14 +32,14 @@ public class UsuarioController {
 		this.result = result;
 		this.validator = validator;
 	}
-	
+
 	@Path("/portalcom/usuario/formulario")
 	public void formulario(){
 		
 	}
-	
-	@Path("/portalcom/usuario/salvar")
+
 	@Transactional
+	@Path("/portalcom/usuario/salvar")
 	public void salvar(Usuario usuario){
 		validator.validate(usuario);
 		List<Message> errors = validator.getValidator().getErrors();
@@ -60,8 +59,8 @@ public class UsuarioController {
 	public List<Usuario> lista(){
 		return useBusiness.todosUsuario();
 	}
-	
-	@Path("/portalcom/usuario/editar")
+
+	@Path("/portalcom/usuario/editar/{idUsuario}")
 	public void editar(String idUsuario){
 		
 		Usuario usuario = useBusiness.encontrarUsuarioById(idUsuario);
@@ -70,7 +69,7 @@ public class UsuarioController {
 		result.of(this).formulario();
 	}
 
-	@Path("/portalcom/usuario/remover")
+	@Path("/portalcom/usuario/remover/{idUsuario}")
 	public void remover(String idUsuario){
 		
 		Usuario usuario = useBusiness.encontrarUsuarioById(idUsuario);

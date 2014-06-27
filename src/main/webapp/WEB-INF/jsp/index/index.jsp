@@ -1,3 +1,3 @@
-<%@ include file="../template/automagTemplate.jsp" %>
+<fmt:message key="site.name" var="siteName" />
 
-${mensagem}
+<tags:header facebookMetas="${true}" title="${genericTitle} - ${title}" description="${description}"/>

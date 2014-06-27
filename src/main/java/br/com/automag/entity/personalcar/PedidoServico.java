@@ -35,9 +35,9 @@ public class PedidoServico extends BasePersistEntity {
 	@NotNull
 	private String descricaoServico;
 
-	@Column(columnDefinition="character(3) default NAO")
+	@Column(columnDefinition="character(3)")
 	@Enumerated(EnumType.STRING)
-	private DOMINIO_SIM_NAO atendido;
+	private DOMINIO_SIM_NAO atendido = DOMINIO_SIM_NAO.NAO;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataAtendimento;

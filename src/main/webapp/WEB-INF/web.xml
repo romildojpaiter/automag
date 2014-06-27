@@ -11,6 +11,12 @@
 		<param-value>messages</param-value>
 	</context-param>
 
+	<context-param>
+		<param-name>br.com.caelum.vraptor.encoding</param-name>
+		<param-value>UTF-8</param-value>
+	</context-param>
+	
+
 	<listener>
 		<listener-class>org.jboss.weld.environment.servlet.Listener</listener-class>
 	</listener>
@@ -20,10 +26,34 @@
 		<resource-env-ref-name>BeanManager</resource-env-ref-name>
 		<resource-env-ref-type>javax.enterprise.inject.spi.BeanManager</resource-env-ref-type>
 	</resource-env-ref>
+	
+	<jsp-config>
+		<jsp-property-group>
+		<display-name>views</display-name>
+		<url-pattern>*.jsp</url-pattern>
+		<include-prelude>/WEB-INF/jsp/prelude.jspf</include-prelude>
+		<include-coda>/WEB-INF/jsp/coda.jspf</include-coda>
+		</jsp-property-group>
+	</jsp-config>
+	
+	<session-config>
+		<cookie-config>
+		<http-only>true</http-only>
+		</cookie-config>
+		<tracking-mode>COOKIE</tracking-mode>
+	</session-config>
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/404.jsp</location>
+	</error-page>			
+	
+	<!-- <session-config>
+        <session-timeout>30</session-timeout>
+	</session-config> -->	
 
 	<!-- Configuração do Tiles -->
-	<!-- 
-	<listener>
+	<!-- <listener>
 		<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
 	</listener>
 
@@ -35,8 +65,7 @@
 	<servlet-mapping>
 		<servlet-name>Tiles Dispatch Servlet</servlet-name>
 		<url-pattern>*.tiles</url-pattern>
-	</servlet-mapping>
-	 -->
+	</servlet-mapping> -->
 
 
 
