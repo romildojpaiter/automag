@@ -1,0 +1,61 @@
+.has-error .help-block,
+.has-error .control-label,
+.has-error .radio,
+.has-error .checkbox,
+.has-error .radio-inline,
+.has-error .checkbox-inline {
+  color: #a94442;
+}
+.has-error .form-control {
+  border-color: #a94442;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+.has-error .form-control:focus {
+  border-color: #843534;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 6px #ce8483;
+}
+.has-error .input-group-addon {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #a94442;
+}
+.has-error .form-control-feedback {
+  color: #a94442;
+}
+
+.form-novo-cadastro .field {
+	display: block;
+	margin: 8px 0px 8px 0px;
+	width: 276px;
+}
+
+.form-novo-cadastro fieldset label{
+	font-family: DroidSans, Arial, Verdana, sans-serif;
+	font-size: 11px;
+	display: block;
+	margin: 0 0 3px 0;
+}
+
+.form-novo-cadastro fieldset label .mandatory{
+	color: #ffb700;
+}
+	
+.form-novo-cadastro fieldset input.default-input{
+		float: left;
+		height: 33px;
+		line-height: 28px;
+		color: #47484c;
+		border: 1px solid #c5c5c5;
+		background: #fff url("../images/sell_input_default.gif") repeat-x;
+		font-family: DroidSans, Arial, Verdana, sans-serif;
+		font-weight: bold;
+		padding: 0 5px;
+		font-size: 12px;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		width: 350px;	
+}
+

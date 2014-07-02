@@ -69,7 +69,48 @@ $(function()
 			agree: "Please accept our policy"
 		}
 	});
-
+	
+	// validate signup form on keyup and submit
+	$("#validateFormNovoCadastro").validate({
+		rules: {
+			nome: "required",
+			email: {
+				required: true,
+				email: true
+			},
+			login: {
+				required: true,
+				minlength: 3
+			},
+			password: {
+				required: true,
+				minlength: 5
+			},
+			confirm_password: {
+				required: true,
+				minlength: 5,
+				equalTo: "#password"
+			}			
+		},
+		messages:{
+			nome: "Informe o seu nome",
+			email: "Informe um e-mail valido",
+			login:{
+				required: "Informe um Login",
+				minlength: "Seu login deve ter pelo menos 3 caracteres"
+			},
+			password: {
+				required: "Informe sua senha",
+				minlength: "Sua senha deve ter pelo menos 5 caracteres"
+			},
+			confirm_password: {
+				required: "Informe sua senha",
+				minlength: "Sua senha deve ter pelo menos 5 caracteres",
+				equalTo: "Entre sua senha igual a senha"
+			}		
+		}
+	});
+	
 	// propose username by combining first- and lastname
 	$("#username").focus(function() {
 		var firstname = $("#firstname").val();

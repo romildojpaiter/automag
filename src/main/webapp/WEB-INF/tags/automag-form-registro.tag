@@ -1,6 +1,7 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ tag description="Página de Registro" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <section id="log-in">
 
@@ -12,31 +13,48 @@
 			
 			
 			<div class="one-half col-539">
-				<form id="new-user" class="grey-corner-box">
+				<form id="validateFormNovoCadastro" class="grey-corner-box novo-cadastro" method="post" 
+					action="${linkTo[RegistroController].concluirNovoCadastro}">
 					<fieldset>
 						<legend><span class="bold">Novo</span> usuário</legend>
 						<ul>
-							<li class="select-two">
-								<div>
-									<input type="radio" name="type" value="register" id="register" />
-									<label for="register"><fmt:message key="criar.cadastro"/><span class="description"><fmt:message key="crie.seu.conta"/></span></label>
+							<li>
+								<div class="form-group">
+									<input type="text" name="nome" placeholder="Nome" id="nome" />
 								</div>
-								<div>
-									<input type="radio" name="type" value="add-offer" id="add-offer" />
-									<label for="add-offer"><fmt:message key="adicionar.oferta"/><span class="description"><fmt:message key="enviar.informacoes.oferta"/></span></label>
+							</li>
+							<li>
+								<div class="form-group">
+									<input type="text" name="email" placeholder="E-mail" id="email" />
+								</div>
+							</li>
+							<li>
+								<div class="form-group">
+									<input type="text" name="login" id="login"  placeholder="Login"/>
+								</div>
+							</li>
+							<li>
+								<div class="form-group">
+									<input type="password" name="password" id="password"  placeholder="Senha"/>
+								</div>
+							</li>
+							<li>
+								<div class="form-group">
+									<input type="password" name="confirm_password" id="confirm_password"  placeholder="Confirma senha"/>
 								</div>
 							</li>
 							<li>
 								<div class="checkbox-custom submit-field">
-									<span class="submit"><input type="submit" value="Register" /></span>
+									<span class="submit">
+										<input type="submit" value="<fmt:message key="registar"/>" />
+									</span>
 								</div>
 							</li>
 						</ul>
 					</fieldset>
 				</form>
 			</div>
-			
-			
+
 		</div>
 		
 	</div>

@@ -12,7 +12,7 @@
 <div class="content-holder">
 	<div class="layer-one">
 		<div class="page-titles">
-			<h1><a href="index.html"><fmt:message key="site.name"/></a></h1>
+			<h1><a href="${linkTo[IndexController].index}"><fmt:message key="site.name"/></a></h1>
 			<p class="sub-title"><fmt:message key="subtitle.site.name"/></p>
 		</div>
 			
@@ -25,10 +25,6 @@
 			</a>
 		</div>
 			
-		<div class="header-buttons">
-			<a href="add-vehicle.html" class="add-an-offer rounded-link-box"><span class="box-content"><strong class="plus-sign">+</strong>&nbsp;Add An Offer</span></a>
-			
-		</div>
 	</div><!--.layer-one-->
 		
 	<div class="layer-two">

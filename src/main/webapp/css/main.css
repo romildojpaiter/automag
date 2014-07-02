@@ -1839,7 +1839,7 @@
 	#log-in .one-half:nth-child(2) form ul li{
 		width: 378px;
 		float: left;
-		margin: 0 0 37px 0;
+		margin: 0 0 15px 0;
 	}
 
 	#log-in .one-half form ul li:last-child{
@@ -1918,6 +1918,40 @@
 		width: 226px;
 	}
 
+	#log-in form.novo-cadastro input{
+		float: left;
+		height: 28px;
+		line-height: 28px;
+		color: #47484c;
+		border: 1px solid #c5c5c5;
+		background: #fff url("../images/sell_input_default.gif") repeat-x;
+		font-family: DroidSans, Arial, Verdana, sans-serif;
+		font-weight: bold;
+		padding: 0 5px;
+		font-size: 12px;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		width: 370px;
+	}
+
+	#log-in form.novo-cadastro input[type=submit]{
+		float: left;
+		height: 28px;
+		line-height: 28px;
+		color: #47484c;
+		border: 1px solid #c5c5c5;
+		background: #fff url("../images/sell_input_default.gif") repeat-x;
+		font-family: DroidSans, Arial, Verdana, sans-serif;
+		font-weight: bold;
+		padding: 0 5px;
+		font-size: 12px;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		width: 100px;
+	}
+
 	.lt-ie9 #log-in form input[type='text'], .lt-ie9 #log-in form input[type='password']{
 		behavior: url("js/vendor/PIE.htc");
 	}
@@ -1937,6 +1971,40 @@
 	}
 
 	#log-in form .submit input{
+		background: url("../images/submit_36px_repeat.gif") repeat-x;
+		line-height: 36px;
+		height: 36px;
+		float: left;
+		border: 0;
+		cursor: pointer;
+		font-family: DroidSans, Arial, Verdana, sans-serif;
+		font-size: 12px;
+		color: #3c3c3c;
+		font-weight: bold;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		text-transform: uppercase;
+		padding: 0 15px;
+		color: #414141;
+		border: 1px solid #fec21a;
+	}
+
+	#log-in form.novo-cadastro .submit{
+		background: url("../images/submit_36px_repeat_hover.gif") repeat-x;
+		line-height: 36px;
+		height: 36px;
+		float: left;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+	}
+
+	.lt-ie9 #log-in form.novo-cadastro .submit{
+		behavior: url("js/vendor/PIE.htc");
+	}
+
+	#log-in form.novo-cadastro .submit input{
 		background: url("../images/submit_36px_repeat.gif") repeat-x;
 		line-height: 36px;
 		height: 36px;
@@ -4626,4 +4694,9 @@
 
 	footer.under-construction .contact-button .email-button span:hover{
 		background: none;
+	}
+	
+	
+	.form-novo-cadastro form{
+		padding: 15px;
 	}

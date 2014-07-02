@@ -44,6 +44,9 @@ public class Conta extends BasePersistEntity {
 		GHOST.setId(1000l);
 	}	
 	
+	public Conta(){
+	}
+	
 	public Conta(String login, String password){
 		this.login = login;
 		this.password = password;

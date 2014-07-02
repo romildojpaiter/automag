@@ -50,6 +50,8 @@ public class Cliente extends BasePersistEntity implements ClienteAutenticavel {
 
 	@Embedded
 	private PessoaJuridica pessoaJuridica;
+	
+	private boolean termosAceitos;
 
 	@OneToOne(mappedBy="cliente")
 	private Conta contaPrincipal;

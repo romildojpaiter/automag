@@ -228,9 +228,16 @@
 
 		<dependency>
 			<groupId>br.com.caelum.vraptor</groupId>
+			<artifactId>vraptor-brutauth</artifactId>
+			<version>4.0.0.Final</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>br.com.caelum.vraptor</groupId>
 			<artifactId>vraptor-routes</artifactId>
 			<version>4.0.0-RC3-SNAPSHOT</version>
 		</dependency>
+		
 		
 		<!-- <dependency>
 			<groupId>br.com.caelum.vraptor</groupId>

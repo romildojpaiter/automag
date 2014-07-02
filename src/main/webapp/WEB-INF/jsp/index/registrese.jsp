@@ -1,5 +1,5 @@
 
-<tags:header facebookMetas="${true}" title="${genericTitle} - ${title}" description="${description}"/>
+<tags:header />
 
 <tags:automag-start-page-content />
 

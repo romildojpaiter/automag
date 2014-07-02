@@ -33,7 +33,6 @@ public class ClienteController extends BaseController {
 	}
 	
 	private void loginForm(String redirectUrl) {
-		// TODO Auto-generated method stub
 		
 	}
 
