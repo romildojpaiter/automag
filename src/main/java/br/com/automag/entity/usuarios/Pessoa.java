@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -31,6 +33,12 @@ import br.com.paiter.core.entity.BasePersistEntity;
 @Entity
 @Where(clause = "removido = 'NAO'")
 @SequenceGenerator(name="pessoa_seq",sequenceName="pessoa_seq",allocationSize=1)
+@NamedQueries(
+		value = {
+				@NamedQuery(name="existsEmail",
+						query="SELECT p FROM Pessoa p WHERE p.email = :email")
+		}
+)
 public class Pessoa extends BasePersistEntity {
 
 	@Id

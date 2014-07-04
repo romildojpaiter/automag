@@ -1,7 +1,8 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 <%@ tag description="Página de Registro" %>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <section id="log-in">
 
@@ -15,32 +16,39 @@
 			<div class="one-half col-539">
 				<form id="validateFormNovoCadastro" class="grey-corner-box novo-cadastro" method="post" 
 					action="${linkTo[RegistroController].concluirNovoCadastro}">
+				<ul class=has-error>
+				  <c:forEach items="${errors}" var="error">
+				    <li>
+				      ${error.message}
+				    </li>
+				  </c:forEach>
+				</ul> 					
 					<fieldset>
 						<legend><span class="bold">Novo</span> usuário</legend>
 						<ul>
 							<li>
 								<div class="form-group">
-									<input type="text" name="nome" placeholder="Nome" id="nome" />
+									<input type="text" name="pessoa.nome" placeholder="Nome" id="nome" />
 								</div>
 							</li>
 							<li>
 								<div class="form-group">
-									<input type="text" name="email" placeholder="E-mail" id="email" />
+									<input type="text" name="pessoa.email" placeholder="E-mail" id="email" />
 								</div>
 							</li>
 							<li>
 								<div class="form-group">
-									<input type="text" name="login" id="login"  placeholder="Login"/>
+									<input type="text" name="conta.login" id="login"  placeholder="Login"/>
 								</div>
 							</li>
 							<li>
 								<div class="form-group">
-									<input type="password" name="password" id="password"  placeholder="Senha"/>
+									<input type="password" name="conta.password" id="password"  placeholder="Senha"/>
 								</div>
 							</li>
 							<li>
 								<div class="form-group">
-									<input type="password" name="confirm_password" id="confirm_password"  placeholder="Confirma senha"/>
+									<input type="password" name="conta.temporalPassword" id="temporalPassword"  placeholder="Confirma senha"/>
 								</div>
 							</li>
 							<li>

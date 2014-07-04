@@ -1,6 +1,6 @@
 $.validator.setDefaults(
 {
-	submitHandler: function() { alert("submitted!"); },
+	// submitHandler: function() { alert("submitted!"); },
 	showErrors: function(map, list) 
 	{
 		this.currentElements.parents('label:first, div:first').find('.has-error').remove();
@@ -73,37 +73,37 @@ $(function()
 	// validate signup form on keyup and submit
 	$("#validateFormNovoCadastro").validate({
 		rules: {
-			nome: "required",
-			email: {
+			'pessoa.nome': "required",
+			'pessoa.email': {
 				required: true,
 				email: true
 			},
-			login: {
+			'conta.login': {
 				required: true,
 				minlength: 3
 			},
-			password: {
+			'conta.password': {
 				required: true,
 				minlength: 5
 			},
-			confirm_password: {
+			'conta.temporalPassword': {
 				required: true,
 				minlength: 5,
 				equalTo: "#password"
 			}			
 		},
 		messages:{
-			nome: "Informe o seu nome",
-			email: "Informe um e-mail valido",
-			login:{
+			'pessoa.nome': "Informe o seu nome",
+			'pessoa.email': "Informe um e-mail valido",
+			'conta.login':{
 				required: "Informe um Login",
 				minlength: "Seu login deve ter pelo menos 3 caracteres"
 			},
-			password: {
+			'conta.password': {
 				required: "Informe sua senha",
 				minlength: "Sua senha deve ter pelo menos 5 caracteres"
 			},
-			confirm_password: {
+			'conta.temporalPassword': {
 				required: "Informe sua senha",
 				minlength: "Sua senha deve ter pelo menos 5 caracteres",
 				equalTo: "Entre sua senha igual a senha"

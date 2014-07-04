@@ -6,39 +6,39 @@ import br.com.automag.persistencia.ClienteDAO;
 import br.com.caelum.vraptor.validator.Validator;
 import br.com.paiter.core.factory.MessageFactory;
 
-public class EmailValidator {
+public class ClienteValidator {
 	
 	private ClienteDAO clienteDAO;
 	private Validator validator;
 	private MessageFactory messageFactory;
 	
 	@Deprecated
-	public EmailValidator() {
+	public ClienteValidator() {
 	}
 
 	@Inject
-	public EmailValidator(Validator validator, ClienteDAO clienteDao, MessageFactory messageFactory) {
+	public ClienteValidator(Validator validator, ClienteDAO clienteDao, MessageFactory messageFactory) {
 		this.clienteDAO = clienteDao;
 		this.validator = validator;
 		this.messageFactory = messageFactory;
 	}
 	
-	public void validate(String email) {
-		if (clienteDAO.existsWithEmail(email)) {
-			validator.add(messageFactory.build("error", "user.errors.email.used"));
+	public void validate(String login) {
+		if (clienteDAO.existsWithLogin(login)) {
+			validator.add(messageFactory.build("error", "user.errors.login.used"));
 		}
-		if (email == null) {
-			validator.add(messageFactory.build("error", "user.errors.email.required"));
+		if (login == null) {
+			validator.add(messageFactory.build("error", "user.errors.login.required"));
 		}
 		
 	}
-	
+
 	public <T> T onErrorRedirectTo(T controller){
 		return validator.onErrorRedirectTo(controller);
 	}
 	
 	public Validator getValidator() {
 		return validator;
-	}	
+	}
 	
 }

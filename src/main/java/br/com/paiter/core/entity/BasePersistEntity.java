@@ -9,8 +9,6 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import br.com.automag.dominio.DominioAtivoInativo.DOMINIO_ATIVO_INATIVO;
 import br.com.automag.dominio.DominioSimNao.DOMINIO_SIM_NAO;
 
@@ -23,10 +21,10 @@ public abstract class BasePersistEntity {
 	protected Date dataCadastro;
 	
 	@Enumerated(EnumType.STRING)
-	protected DOMINIO_SIM_NAO removido;
+	protected DOMINIO_SIM_NAO removido = DOMINIO_SIM_NAO.NAO;
 	
 	@Enumerated(EnumType.STRING)
-	protected DOMINIO_ATIVO_INATIVO situacao;
+	protected DOMINIO_ATIVO_INATIVO situacao = DOMINIO_ATIVO_INATIVO.ATIVO;
 	
 	public abstract Long getId();
 	

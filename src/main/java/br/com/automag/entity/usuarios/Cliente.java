@@ -3,6 +3,7 @@ package br.com.automag.entity.usuarios;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -42,7 +43,7 @@ public class Cliente extends BasePersistEntity implements ClienteAutenticavel {
 	@Enumerated(EnumType.STRING)
 	private DOMINIO_TIPO_CLIENTE tipoCliente;
 
-	@OneToOne(mappedBy="cliente")
+	@OneToOne(mappedBy="cliente", cascade=CascadeType.ALL)
 	private Pessoa pessoa;
 
 	@Embedded
@@ -53,7 +54,7 @@ public class Cliente extends BasePersistEntity implements ClienteAutenticavel {
 	
 	private boolean termosAceitos;
 
-	@OneToOne(mappedBy="cliente")
+	@OneToOne(mappedBy="cliente", cascade=CascadeType.ALL)
 	private Conta contaPrincipal;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
@@ -61,7 +62,7 @@ public class Cliente extends BasePersistEntity implements ClienteAutenticavel {
 	@JoinTable(name = "cliente_contas", 
 		joinColumns = @JoinColumn(name = "idCliente"), 
 		inverseJoinColumns = @JoinColumn(name = "idConta", unique = false))
-	private Set<Conta> conta;
+	private Set<Conta> contas;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = javax.persistence.CascadeType.ALL)
 	@ListIndexBase(value=1)
@@ -72,13 +73,13 @@ public class Cliente extends BasePersistEntity implements ClienteAutenticavel {
 	
 	@ManyToOne
 	@JoinColumn(name="idLogomarca",
-		nullable=false,
+		nullable=true,
 		insertable=true)	
 	private Imagem logomarca;
 	
 	@ManyToOne
 	@JoinColumn(name="idLocalidade",
-		nullable=false,
+		nullable=true,
 		insertable=true)
 	private Localidade localidade;
 
@@ -196,12 +197,12 @@ public class Cliente extends BasePersistEntity implements ClienteAutenticavel {
 	}
 
 
-	public Set<Conta> getConta() {
-		return conta;
+	public Set<Conta> getContas() {
+		return contas;
 	}
 
-	public void setConta(Set<Conta> conta) {
-		this.conta = conta;
+	public void setContas(Set<Conta> conta) {
+		this.contas = conta;
 	}
 
 	public List<Veiculo> getVeiculos() {
@@ -275,6 +276,14 @@ public class Cliente extends BasePersistEntity implements ClienteAutenticavel {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public boolean isTermosAceitos() {
+		return termosAceitos;
+	}
+
+	public void setTermosAceitos(boolean termosAceitos) {
+		this.termosAceitos = termosAceitos;
 	}
 
 }
