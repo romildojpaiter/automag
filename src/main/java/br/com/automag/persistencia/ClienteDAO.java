@@ -49,6 +49,16 @@ public class ClienteDAO extends GenericDAO<Long, Cliente>{
 		}
 		return false;
 	}
+
+	public Cliente getClienteWithLogin(String login) {
+		try {
+			Conta conta = this.getEntityManager().createNamedQuery("existeLogin", Conta.class).setParameter("login", login).getSingleResult();
+			return conta.getCliente();
+		} catch (NoResultException e) {
+			
+		}
+		return null;
+	}
 	
 	
 

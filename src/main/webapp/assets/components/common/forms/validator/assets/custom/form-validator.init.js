@@ -21,6 +21,26 @@ $.validator.setDefaults(
 
 $(function()
 {
+	$("#validateFormLogin").validate({
+		rules:{
+			login:"required",
+			password:{
+				required: true,
+				minlength: 5
+			}
+		},
+		messages:{
+			login: "Informe seu login",
+			password:{
+				required: "Informe sua senha",
+				minlength: "Sua senha deve ter pelo menos 5 caracteres"
+			}			
+		}
+	});
+});
+
+$(function()
+{
 	// validate signup form on keyup and submit
 	$("#validateSubmitForm").validate({
 		rules: {

@@ -15,6 +15,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -34,6 +36,10 @@ import br.com.paiter.core.entity.portalcom.CategoriaCliente;
 @Entity
 @Where(clause = "removido = 'NAO'")
 @SequenceGenerator(name="cliente_seq",sequenceName="cliente_seq",allocationSize=1)
+/*@NamedQueries(value={
+		@NamedQuery(name="",
+				query="")
+})*/
 public class Cliente extends BasePersistEntity implements ClienteAutenticavel {
 
 	@Id

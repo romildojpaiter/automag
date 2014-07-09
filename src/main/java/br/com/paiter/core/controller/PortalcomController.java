@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
 
 import br.com.caelum.vraptor.Controller;
@@ -20,6 +21,9 @@ public class PortalcomController {
 
 	@Inject
 	HttpServletRequest request;
+	@Inject
+	HttpServletResponse response;
+	
 	@Inject
 	PortalcomValidator validator;
 

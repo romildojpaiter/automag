@@ -16,29 +16,29 @@
 			<div class="one-half col-539">
 				<form id="validateFormNovoCadastro" class="grey-corner-box novo-cadastro" method="post" 
 					action="${linkTo[RegistroController].concluirNovoCadastro}">
-				<ul class=has-error>
-				  <c:forEach items="${errors}" var="error">
-				    <li>
-				      ${error.message}
-				    </li>
-				  </c:forEach>
-				</ul> 					
+					<ul class=has-error>
+					  <c:forEach items="${errors}" var="error">
+					    <li>
+					      ${error.message}
+					    </li>
+					  </c:forEach>
+					</ul> 					
 					<fieldset>
 						<legend><span class="bold">Novo</span> usuário</legend>
 						<ul>
 							<li>
 								<div class="form-group">
-									<input type="text" name="pessoa.nome" placeholder="Nome" id="nome" />
+									<input type="text" name="pessoa.nome" placeholder="Nome" id="nome" value="${pessoa.nome}"/>
 								</div>
 							</li>
 							<li>
 								<div class="form-group">
-									<input type="text" name="pessoa.email" placeholder="E-mail" id="email" />
+									<input type="text" name="pessoa.email" placeholder="E-mail" id="email" value="${pessoa.email}"  />
 								</div>
 							</li>
 							<li>
 								<div class="form-group">
-									<input type="text" name="conta.login" id="login"  placeholder="Login"/>
+									<input type="text" name="conta.login" id="login"  placeholder="Login" value="${conta.login}" />
 								</div>
 							</li>
 							<li>

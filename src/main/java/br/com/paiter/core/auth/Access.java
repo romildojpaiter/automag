@@ -29,8 +29,7 @@ public class Access {
 	}
 
 	@Inject
-	public Access(HttpServletResponse response, HttpServletRequest request,
-			ClienteDAO clienteDao) {
+	public Access(HttpServletResponse response, HttpServletRequest request, ClienteDAO clienteDao) {
 		this.response = response;
 		this.request = request;
 		this.clienteDao = clienteDao;
