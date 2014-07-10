@@ -29,7 +29,7 @@ public class LoginValidator {
 			validator.add(messageFactory.build("errorlogin", "user.errors.password.length"));
 		}
 		if (login == null) {
-			validator.add(messageFactory.build("errorlogin", "user.errors.email.required"));
+			validator.add(messageFactory.build("errorlogin", "user.errors.login.required"));
 		}
 		return !validator.hasErrors();
 	}

@@ -6,23 +6,19 @@
 
 <section id="log-in">
 
+    <tags:automag-exibe-errors />
+    
 	<div class="content-holder">
 	
 		<div class="full-width">
+		
 			
 			<tags:automag-form-autenticacao />
 			
 			
 			<div class="one-half col-539">
 				<form id="validateFormNovoCadastro" class="grey-corner-box novo-cadastro" method="post" 
-					action="${linkTo[RegistroController].concluirNovoCadastro}">
-					<ul class=has-error>
-					  <c:forEach items="${errors}" var="error">
-					    <li>
-					      ${error.message}
-					    </li>
-					  </c:forEach>
-					</ul> 					
+					action="${linkTo[RegistroController].concluirNovoCadastro}">			
 					<fieldset>
 						<legend><span class="bold">Novo</span> usuário</legend>
 						<ul>

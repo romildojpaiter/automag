@@ -17,12 +17,37 @@
 		</div>
 			
 		<div class="dealer-login">
-			<a href="dealer-details.html" class="dealer-name">
-				<fmt:message key="dealer.login" />
-			</a>
-			<a href="#" class="sign-out">
-				<fmt:message key="sign.out" />
-			</a>
+			
+			<c:choose>
+			
+				<c:when test="${not usuarioLogado.loggedIn}">
+					
+					<div id="login-header">
+						<form method="post" action="${linkTo[AutenticadorController].autenticador}">
+							<div class="form-group">
+								<input type="text" name="login" id="login-email" placeholder="Login" />
+							</div>
+							<div class="form-group">
+								<input type="password" name="password" id="login-password" placeholder="Senha" />
+							</div>
+							<div class="form-group">
+								<span class="submit"><input type="submit" value="Log in" /></span>
+							</div>
+						</form>
+					</div>
+					
+				</c:when>
+			
+				<c:otherwise>
+					<a href="dealer-details.html" class="dealer-name">
+						${usuarioLogado.cliente.pessoa.nome}
+					</a>
+					<a href="${linkTo[AutenticadorController].logoff}" class="sign-out">
+						<fmt:message key="sign.out" />
+					</a>
+				</c:otherwise>
+			
+			</c:choose>	
 		</div>
 			
 	</div><!--.layer-one-->

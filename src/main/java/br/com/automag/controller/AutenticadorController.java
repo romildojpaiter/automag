@@ -3,6 +3,10 @@ package br.com.automag.controller;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.http.HttpRequest;
 
 import br.com.automag.auth.UsuarioLogado;
 import br.com.automag.entity.usuarios.Cliente;
@@ -24,6 +28,7 @@ public class AutenticadorController extends BaseController {
 	@Inject ClienteDAO clienteDAO;
 	@Inject UsuarioLogado usuarioLogado; 
 	@Inject LoginValidator loginValidator;
+	@Inject HttpServletRequest request;
 
 	@Post
 	public void autenticador(String login, String password){
@@ -35,8 +40,6 @@ public class AutenticadorController extends BaseController {
 				usuarioLogado.logaCliente(cliente);
 				result.redirectTo(ClienteController.class).dashboard();
 			}
-		} else {
-			loginValidator.getValidator().add(i18n("errorlogin", "auth.invalid.login"));
 		}
 
 		List<Message> errors = loginValidator.getValidator().getErrors();
@@ -45,6 +48,13 @@ public class AutenticadorController extends BaseController {
 			loginValidator.getValidator().onErrorRedirectTo(IndexController.class).registrese();
 		}
 		
+	}
+	
+	public void logoff(){
+		HttpSession session = request.getSession();
+		session.invalidate();
+		usuarioLogado.desloga();
+		result.redirectTo(IndexController.class).index();
 	}
 	
 }

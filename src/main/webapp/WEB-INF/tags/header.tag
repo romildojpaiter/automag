@@ -22,6 +22,8 @@
 	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/uniform.default.css">
 	<link rel="stylesheet" href="css/prettyPhoto.css">
+
+	<!-- <link rel="stylesheet" href="assets/components/library/bootstrap/css/bootstrap.css">  -->
 	
 	<script src="js/vendor/modernizr-2.6.2.min.js"></script>
 	<script src="js/vendor/jquery-1.8.2.min.js"></script>

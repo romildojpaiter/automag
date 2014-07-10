@@ -39,6 +39,10 @@ public class UsuarioLogado implements Serializable{
 		return cliente != null;
 	}
 	
+	public void desloga(){
+		this.cliente = null;
+	}
+	
 	@Override
 	public String toString() {
 		return "[Cliente = " + cliente + ", ip = " + getIp() + "]";

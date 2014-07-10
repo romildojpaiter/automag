@@ -1,5 +1,6 @@
 package br.com.automag.entity.usuarios;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
 
@@ -40,7 +41,7 @@ import br.com.paiter.core.entity.portalcom.CategoriaCliente;
 		@NamedQuery(name="",
 				query="")
 })*/
-public class Cliente extends BasePersistEntity implements ClienteAutenticavel {
+public class Cliente extends BasePersistEntity implements ClienteAutenticavel, Serializable {
 
 	@Id
 	@GeneratedValue(generator="cliente_seq", strategy=GenerationType.SEQUENCE)

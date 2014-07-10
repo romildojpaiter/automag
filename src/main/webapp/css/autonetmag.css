@@ -59,3 +59,36 @@
 		width: 350px;	
 }
 
+/*
+*  Montando as mensagens os estilos de mensagens de erro dentro do sistema
+*/
+
+.content-errors{
+	margin-bottom: 25px;	
+}
+
+.validation-summary-errors ul { 
+	list-style: none;
+	margin-left:-40px
+}
+    
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert-danger hr {
+  border-top-color: #e4b9c0;
+}
+
+.alert-danger .alert-link {
+  color: #843534;
+}
