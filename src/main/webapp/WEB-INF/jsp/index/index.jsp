@@ -1,10 +1,3 @@
-<!DOCTYPE html>
+<fmt:message key="site.name" var="siteName" />
 
-<html>
-  <head>
-    <title>Página inicial</title>
-  </head>
-  <body>
-    ${mensagem}
-  </body>
-</html>
+<tags:header facebookMetas="${true}" title="${genericTitle} - ${title}" description="${description}"/>
