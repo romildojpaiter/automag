@@ -7,6 +7,19 @@
 	
 	<!-- <persistence-unit name="default" transaction-type="RESOURCE_LOCAL">  -->
 	<persistence-unit name="default">
+<<<<<<< HEAD
+	
+		<!-- Entidades do Projeto --> 
+		<class>br.com.automag.entity.Carro</class>
+		<class>br.com.automag.entity.Imagem</class>
+		<class>br.com.automag.entity.Marca</class> 
+	
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:automagDB" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="" />
+=======
         
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <!-- <non-jta-data-source>java:jdbc/automagDS</non-jta-data-source> -->
@@ -18,6 +31,7 @@
 		-->
 		 
         <properties>
+>>>>>>> 832918feedaef3108e5e94c8601f49d8bd2ca7c4
 			
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/autonetmagz" />
@@ -27,10 +41,17 @@
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
             <property name="transaction.factory_class" value="org.hibernate.transaction.JDBCTransactionFactory" />
 			<property name="hibernate.show_sql" value="true" />
+<<<<<<< HEAD
+			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+		</properties>
+	</persistence-unit>
+=======
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
         </properties>
         
     </persistence-unit>
+>>>>>>> 832918feedaef3108e5e94c8601f49d8bd2ca7c4
 	
 </persistence>
