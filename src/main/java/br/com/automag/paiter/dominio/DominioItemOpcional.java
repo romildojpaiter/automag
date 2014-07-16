@@ -1,6 +1,6 @@
 package br.com.automag.paiter.dominio;
 
-import br.com.automag.paiter.core.utils.BaseDominioInterface;
+import br.com.paiter.core.utils.dominio.BaseDominioInterface;
 
 public class DominioItemOpcional {
 	
