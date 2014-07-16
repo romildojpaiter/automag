@@ -39,6 +39,8 @@ public class AutenticadorController extends BaseController {
 			if(cliente != null && cliente.getContaPrincipal().getPassword().equals(password)){
 				usuarioLogado.logaCliente(cliente);
 				result.redirectTo(ClienteController.class).dashboard();
+			}else{
+				loginValidator.getValidator().add(i18n("errorlogin", "auth.invalid.login"));
 			}
 		}
 

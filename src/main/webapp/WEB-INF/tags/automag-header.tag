@@ -39,7 +39,7 @@
 				</c:when>
 			
 				<c:otherwise>
-					<a href="dealer-details.html" class="dealer-name">
+					<a href="${linkTo[ClienteController].dashboard}" class="dealer-name">
 						${usuarioLogado.cliente.pessoa.nome}
 					</a>
 					<a href="${linkTo[AutenticadorController].logoff}" class="sign-out">

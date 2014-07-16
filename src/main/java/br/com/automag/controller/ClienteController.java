@@ -23,4 +23,16 @@ public class ClienteController {
 	public void dashboard(){
 		
 	}
+
+	@Get
+	@CustomBrutauthRules(LogadoRule.class)
+	public void meusveiculos(){
+		
+	}
+	
+	@Get
+	@CustomBrutauthRules(LogadoRule.class)
+	public void incluirveiculo(){
+		
+	}
 }

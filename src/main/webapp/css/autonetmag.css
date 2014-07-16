@@ -1,3 +1,38 @@
+/**
+ *   Style Painel de Controle - Cliente 
+ */
+.painel-controle{
+	background: #f2f2f2;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+ 	padding: 10px;
+ 	width: 755px;
+ 	display: block;
+}
+ 
+.painel-incluir-veiculo{
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+ 	padding: 10px;
+ 	width: 755px;
+ 	display: block;
+}
+
+.painel-controle-half{
+ 	background: #f2f2f2;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+ 	padding: 10px;
+ 	width: 165px;
+ }
+ 
+ 
+/**
+ *   Conteúdo novo formulário
+ */
 .has-error .help-block,
 .has-error .control-label,
 .has-error .radio,
@@ -43,20 +78,20 @@
 }
 	
 .form-novo-cadastro fieldset input.default-input{
-		float: left;
-		height: 33px;
-		line-height: 28px;
-		color: #47484c;
-		border: 1px solid #c5c5c5;
-		background: #fff url("../images/sell_input_default.gif") repeat-x;
-		font-family: DroidSans, Arial, Verdana, sans-serif;
-		font-weight: bold;
-		padding: 0 5px;
-		font-size: 12px;
-		border-radius: 3px;
-		-moz-border-radius: 3px;
-		-webkit-border-radius: 3px;
-		width: 350px;	
+	float: left;
+	height: 33px;
+	line-height: 28px;
+	color: #47484c;
+	border: 1px solid #c5c5c5;
+	background: #fff url("../images/sell_input_default.gif") repeat-x;
+	font-family: DroidSans, Arial, Verdana, sans-serif;
+	font-weight: bold;
+	padding: 0 5px;
+	font-size: 12px;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	width: 350px;	
 }
 
 /*
@@ -92,3 +127,134 @@
 .alert-danger .alert-link {
   color: #843534;
 }
+
+/**
+ * Botoes
+ */
+.btn-primary {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  background-image: none;
+}
+
+/**
+ *
+ */
+.btn {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -moz-user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+input, button, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+}
+button, select {
+    text-transform: none;
+}
+button {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    margin: 0px;
+    font: inherit;
+    color: inherit;
+} 
+
+/**
+ *  Fontes para componentes de textarea
+ */
+	.content-holder #vehicle-description textarea{
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, HelveticaNeueLTCom-Lt, Arial, "Lucida Grande", sans-serif;
+		font-size: 15px;
+		margin: 0 0 15px 0;
+	}
+
+/**
+ * Novos Conteiner Centrais de conteudo para o site
+ */ 
+	.content-holder .middle-width-700{
+		margin:15px 15px;
+		width: 755px;
+		clear: both;
+	}
+	
+	.content-middle{
+		width: 700px;
+		margin: 0 auto;
+	}
+
+	.content-middle .middle-width-700{
+		width: 700px;
+		clear: both;
+	}
+
+	.content-middle .middle-width{
+		width: 700px;
+		clear: both;
+	}
+
+	.content-middle .middle-width.box-text-default{
+		width: 700px;
+		padding: 20px;
+	}
+ 
+ 
+/**
+ *
+ */
+.content-holder .full-width.box-text-default-700{
+	width: 700px;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.content-middle .full-width.box-text-default-700{
+	width: 680px;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+#page-content .box-text-default-700 h3{
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, HelveticaNeueLTCom-Lt, Arial, "Lucida Grande", sans-serif;
+	font-size: 18px;
+	margin: 0 0 15px 0;
+}
+
+#page-content .box-text-default-700 p{
+	font-family: DroidSans, Arial, Verdana, sans-serif;
+	font-size: 11px;
+	line-height: 20px;
+} 

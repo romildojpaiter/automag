@@ -11,23 +11,20 @@
 		<div class="content-holder">
 	
 			<div class="full-width">
-	
-			<tags:automag-menu-adm />			
-	
+
+			<tags:automag-menu-adm />	
+					
 			<div class="one-half col-700 painel-controle">
-				<h3><span class="bold">Carros</span></h3>
+				<h3><span class="bold">Meus Veículos</span></h3>
+				<br/>
 				<table>
 					<tr>
 						<td>
-							<a href="#">Perfil</a>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<a href="${linkTo[ClienteController].meusveiculos}">Meus veículos</a>
+							<a href="${linkTo[ClienteController].incluirveiculo}" class="btn btn-primary">Adicionar Veículo</a>
 						</td>
 					</tr>
 				</table>
+				
 			</div>				
 
 						
