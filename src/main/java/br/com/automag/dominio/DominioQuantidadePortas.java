@@ -31,17 +31,17 @@ public class DominioQuantidadePortas {
 
 		@Override
 		public Integer getOrdinal() {
-			return this.getOrdinal();
+			return this.ordinal();
 		}
 
 		@Override
 		public String getName() {
-			return this.getName();
+			return this.name();
 		}
 
 		@Override
 		public String getDesc() {
-			return this.getDesc();
+			return this.desc;
 		}
 
 		@Override

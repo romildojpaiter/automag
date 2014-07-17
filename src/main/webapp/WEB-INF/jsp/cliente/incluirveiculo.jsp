@@ -22,7 +22,7 @@
 					
 							<div class="full-width light-grey-corner-box box-text-default-700">
 								<h3>Divulgue agora mesmo seu carro no <strong>Automag </strong>e tenha o benefício da visualização de mais de 1 milhão de internautas!</h3>
-								<p>Required fields are marked with * </p>
+								<p> Campos Obrigatórios são marcados com * </p>
 								<p>Por favor, oferte somente veículos!</p>
 								<p>Anúnciante tem uma sessão especial de serviços</p>
 								<p>Se você está com difículdade em alguma parte do site, envie um e-mail para <strong>contato@automag.com.br</strong>, e logo entramos em contato.</p>
@@ -48,25 +48,17 @@
 													<input id="modelo" name="modelo.nome" type="text" placeholder="Informe o modelo" class="default-input"/>
 													<input id="modelo-id" name="modelo.id" type="hidden" />
 												</div>
-												<div>
-													<label for="select-tipo-motorizacao">Tipo Motorização: <span class="mandatory">*</span></label>
-													<select id="select-tipo-motorizacao">
-														<option selected="selected">Select</option>
-														<option value="option1">Option 1</option>
-														<option value="option1">Option 2</option>
-														<option value="option1">Option 3</option>
-													</select>
-												</div>												
+												<tags:select-combobox-dominio label="Tipo motorização" showSelecione="true" fieldRequired="true" itens="${comboBoxesAutonetmag.comboBoxDominioTipoMotorizacao}" id="select-tipo-motorizacao" name="motorizacao" />												
 											</li>
 											
 											<li class="select-four">
 												<div>
-													<label for="ano-fabricacao">Ano de Fabricação: <span class="mandatory">*</span></label>
+													<label for="ano-fabricacao">Ano de fabricação: <span class="mandatory">*</span></label>
 													<input id="ano-fabricacao" name="veiculo.anoFabricacao" type="text" 
 														placeholder="Informe o ano de fabricação" class="default-input"/>
 												</div>
 												<div>
-													<label for="ano-modelo">Ano do Modelo: <span class="mandatory">*</span></label>
+													<label for="ano-modelo">Ano do modelo: <span class="mandatory">*</span></label>
 													<input id="ano-modelo" name="veiculo.anoModelo" type="text" 
 														placeholder="Informe o ano do modelo" class="default-input"/>
 												</div>
@@ -78,34 +70,11 @@
 											</li>
 											
 											<li class="select-four">
-												<div>
-													<label for="select-tipo-combustivel">Tipo Combustível: <span class="mandatory">*</span></label>
-													<select id="select-tipo-combustivel">
-														<option selected="selected">Selecione</option>
-														<option value="option1">Option 1</option>
-														<option value="option1">Option 2</option>
-														<option value="option1">Option 3</option>
-													</select>
-												</div>
-												<div>
-													<label for="select-portas">Quantidade de Portas: <span class="mandatory">*</span></label>
-													<select id="select-portas">
-														<option selected="selected">Selecione</option>
-														<option value="option1">Option 1</option>
-														<option value="option1">Option 2</option>
-														<option value="option1">Option 3</option>
-													</select>
-												</div>
-												<div>
-													<label for="select-tipo-veiculo">Tipo veículo: <span class="mandatory">*</span></label>
-													<select id="select-tipo-veiculo" >
-														<option selected="selected">Selecione</option>
-														<option value="option1">Option 1</option>
-														<option value="option1">Option 2</option>
-														<option value="option1">Option 3</option>
-													</select>
-												</div>
+												<tags:select-combobox-dominio label="Tipo combustível" showSelecione="true" fieldRequired="true" itens="${comboBoxesAutonetmag.comboBoxDominioTipoCombustivel}" id="select-tipo-combustivel" name="combustivel" />												
+												<tags:select-combobox-dominio label="Quantidade de portas" showSelecione="true" fieldRequired="true" itens="${comboBoxesAutonetmag.comboBoxDominioQtdPortas}" id="select-portas" name="portas" />												
+												<tags:select-combobox-dominio label="Tipo veículo" showSelecione="true" fieldRequired="true" itens="${comboBoxesAutonetmag.comboBoxDominioTipoVeiculo}" id="select-tipo-veiculo" name="tipoveiculo" />												
 											</li>
+											
 										</ul>
 									</fieldset>
 									
@@ -113,73 +82,17 @@
 										<legend><span class="bold">Condições</span></legend>
 										<ul class="field-content">
 											<li class="select-four">
-												<div>
-													<label for="select-condicao-pneus">Pneus:</label>
-													<select id="select-condicao-pneus">
-														<option selected="selected">Selecione</option>
-														<option value="option1">Option 1</option>
-														<option value="option1">Option 2</option>
-														<option value="option1">Option 3</option>
-													</select>
-												</div>
-												<div>
-													<label for="select-interior">Interior:</label>
-													<select id="select-interior">
-														<option selected="selected">Selecione</option>
-														<option value="option1">Option 1</option>
-														<option value="option1">Option 2</option>
-														<option value="option1">Option 3</option>
-													</select>
-												</div>
-												<div>
-													<label for="select-exterior">Exterior:</label>
-													<select id="select-exterior" >
-														<option selected="selected">Selecione</option>
-														<option value="option1">Option 1</option>
-														<option value="option1">Option 2</option>
-														<option value="option1">Option 3</option>
-													</select>
-												</div>
+												<tags:select-combobox-dominio label="Pneus" showSelecione="false" preSelected="BOM" itens="${comboBoxesAutonetmag.comboBoxDominioTipoCondicao}" id="select-pneus" name="pneus" />
+												<tags:select-combobox-dominio label="Interior" showSelecione="false" preSelected="BOM" itens="${comboBoxesAutonetmag.comboBoxDominioTipoCondicao}" id="select-interior" name="interior" />
+												<tags:select-combobox-dominio label="Exterior" showSelecione="false" preSelected="BOM" itens="${comboBoxesAutonetmag.comboBoxDominioTipoCondicao}" id="select-exterior" name="exterior" />
 											</li>											
 											<li class="select-four">
-												<div>
-													<label for="select-condicao-pneus">Motor:</label>
-													<select id="select-condicao-pneus">
-														<option selected="selected">Selecione</option>
-														<option value="option1">Option 1</option>
-														<option value="option1">Option 2</option>
-														<option value="option1">Option 3</option>
-													</select>
-												</div>
-												<div>
-													<label for="select-bancos">Bancos:</label>
-													<select id="select-bancos">
-														<option selected="selected">Selecione</option>
-														<option value="option1">Option 1</option>
-														<option value="option1">Option 2</option>
-														<option value="option1">Option 3</option>
-													</select>
-												</div>
-												<div>
-													<label for="select-freios">Freios:</label>
-													<select id="select-freios" >
-														<option selected="selected">Selecione</option>
-														<option value="option1">Option 1</option>
-														<option value="option1">Option 2</option>
-														<option value="option1">Option 3</option>
-													</select>
-												</div>
+												<tags:select-combobox-dominio label="Motor" showSelecione="false" preSelected="BOM" itens="${comboBoxesAutonetmag.comboBoxDominioTipoCondicao}" id="select-motor" name="motor" />
+												<tags:select-combobox-dominio label="Bancos" showSelecione="false" preSelected="BOM" itens="${comboBoxesAutonetmag.comboBoxDominioTipoCondicao}" id="select-bancos" name="bancos"/>
+												<tags:select-combobox-dominio label="Freios" showSelecione="false" preSelected="BOM" itens="${comboBoxesAutonetmag.comboBoxDominioTipoCondicao}" id="select-freios" name="freios" />
 											</li>											
 											<li class="select-four">
-												<div>
-													<label for="select-suspensao">Suspensão:</label>
-													<select id="select-suspensao">
-														<option selected="selected">Selecione</option>
-														<option value="option1">Option 1</option>
-														<option value="option1">Option 2</option>
-														<option value="option1">Option 3</option>
-													</select>
-												</div>
+												<tags:select-combobox-dominio label="Suspensão" showSelecione="false" preSelected="BOM" itens="${comboBoxesAutonetmag.comboBoxDominioTipoCondicao}" id="select-suspencao" name="suspencao" />
 											</li>
 										</ul>
 									
@@ -263,7 +176,7 @@
 												<input type="checkbox" value="agreed" id="check-agreed" /><label for="check-agreed">I agree to the Terms and Conditions. </label>
 											</div>
 											<div class="submit-vehicle default-submit">
-												<input type="submit" value="submit" />
+												<input type="submit" value="enviar" />
 											</div>
 										</div>
 											

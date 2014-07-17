@@ -21,10 +21,10 @@ import br.com.paiter.core.entity.BasePersistEntity;
 @Where(clause = "removido = 'NAO'")
 @SequenceGenerator(name="conta_seq",sequenceName="conta_seq",allocationSize=1)
 @NamedQueries(
-		value = { 
-				@NamedQuery(name="existeLogin",
-						query="SELECT c FROM Conta c WHERE c.login = :login"),
-		}
+	value = { 
+		@NamedQuery(name="existeLogin",
+			query="SELECT c FROM Conta c WHERE c.login = :login"),
+	}
 )
 public class Conta extends BasePersistEntity {
 	

@@ -17,50 +17,43 @@ public class DominioTipoCombustivel {
 		TETRAFUEL("Tetrafuel"),
 		GASOLINA_E_GAS("Gasolina e Gás");
 		
-		public String desc;
+		public String descricao;
 		public String longDesc;
 		
 		DOMINIO_TIPO_COMBUSTIVEL(String desc) {
-			this.desc = desc;
+			this.descricao = desc;
 			this.longDesc = desc;
 		}
 		
 		DOMINIO_TIPO_COMBUSTIVEL(String desc, String longDesc) {
-			this.desc = desc;
+			this.descricao = desc;
 			this.longDesc = longDesc;
 		}
 
-		@Override
 		public String getLongDesc() {
-			return (StringUtils.isBlank(this.longDesc)) ? this.desc : this.longDesc;
+			return (StringUtils.isBlank(this.longDesc)) ? this.descricao : this.longDesc;
 		}
 
-		@Override
 		public Integer getOrdinal() {
-			return this.getOrdinal();
+			return this.ordinal();
 		}
 
-		@Override
 		public String getName() {
-			return this.getName();
+			return this.name();
 		}
 
-		@Override
 		public String getDesc() {
-			return this.desc;
+			return this.descricao;
 		}
 
-		@Override
 		public Integer getSize() {
 			return values().length;
 		}
 
-		@Override
 		public boolean isValido(int cdItemDominio) {
 			return (getSize() >= cdItemDominio) ? true : false;
 		}
 
-		@Override
 		public DOMINIO_TIPO_COMBUSTIVEL valueOf(int ord) {
 			return values()[ord];
 		}

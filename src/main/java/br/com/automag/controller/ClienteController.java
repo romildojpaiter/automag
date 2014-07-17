@@ -34,5 +34,7 @@ public class ClienteController {
 	@CustomBrutauthRules(LogadoRule.class)
 	public void incluirveiculo(){
 		
+		
+		
 	}
 }

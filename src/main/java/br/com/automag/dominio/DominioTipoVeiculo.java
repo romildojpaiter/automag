@@ -12,7 +12,7 @@ public class DominioTipoVeiculo {
 		CARRO("Carro"),
 		CAMINHONETA("Caminhoneta"),
 		CAMINHAO("Caminhão"),
-		CARRETA("CARRETA");
+		CARRETA("Carreta");
 		
 		private String desc;
 		private String longDesc;
@@ -34,17 +34,17 @@ public class DominioTipoVeiculo {
 
 		@Override
 		public Integer getOrdinal() {
-			return this.getOrdinal();
+			return this.ordinal();
 		}
 
 		@Override
 		public String getName() {
-			return this.getName();
+			return this.name();
 		}
 
 		@Override
 		public String getDesc() {
-			return this.getDesc();
+			return this.desc;
 		}
 
 		@Override
