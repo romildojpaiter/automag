@@ -15,6 +15,7 @@ public class GenericDAO<PK, T> {
 		this.entityManager = entityManager;
 	}
 
+	@SuppressWarnings("unchecked")
 	public T getById(PK pk) {
 		return (T) entityManager.find(getTypeClass(), pk);
 	}
@@ -37,6 +38,7 @@ public class GenericDAO<PK, T> {
 		entityManager.remove(entity);
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<T> findAll() {
 		return entityManager.createQuery(("FROM " + getTypeClass().getName()))
 				.getResultList();
