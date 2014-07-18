@@ -41,8 +41,8 @@ public class DominioItemOpcional {
 		GPS("GPS","GPS"),
 		RADIO("RA","Rádio"),
 		ENCONSTO_DE_CABECA_TRASEIRO("ECT","Enconsto de cabeça tras"),
-		BANCO_MOTORISTA_COM_AJUSTE_DE_AUTURA("BMR","Banco do motorista com ajuste de autura"),
-		VOLANTE_COM_REGULAGEM_DE_AUTURA("VRA","Volante com regulagem de autura"),
+		BANCO_MOTORISTA_COM_AJUSTE_DE_AUTURA("BMR","Banco do motorista com ajuste de altura"),
+		VOLANTE_COM_REGULAGEM_DE_AUTURA("VRA","Volante com regulagem de altura"),
 		;
 		
 		private String desc;

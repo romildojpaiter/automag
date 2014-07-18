@@ -26,7 +26,7 @@ http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 			<property name="transaction.factory_class"
 				value="org.hibernate.transaction.JDBCTransactionFactory" />
 			<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="false" />
+			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 		</properties>
 

@@ -30,7 +30,7 @@
 							
 							<div class="middle-width-700 sell-form <!--options-form-->">
 								
-								<form>
+								<form id="form-cadastro-veiculo" method="post">
 								
 									<fieldset id="vehicle-data">
 										
@@ -41,12 +41,10 @@
 												<div>
 													<label for="marca">Marca: <span class="mandatory">*</span></label>
 													<input id="marca" name="marca.nome" type="text" placeholder="Informe a marca" class="default-input"/>
-													<input id="marca-id" name="marca.id" type="hidden" />
 												</div>
 												<div>
 													<label for="modelo">Modelo: <span class="mandatory">*</span></label>
 													<input id="modelo" name="modelo.nome" type="text" placeholder="Informe o modelo" class="default-input"/>
-													<input id="modelo-id" name="modelo.id" type="hidden" />
 												</div>
 												<tags:select-combobox-dominio label="Tipo motorização" showSelecione="true" fieldRequired="true" itens="${comboBoxesAutonetmag.comboBoxDominioTipoMotorizacao}" id="select-tipo-motorizacao" name="motorizacao" />												
 											</li>
@@ -65,7 +63,6 @@
 												<div>
 													<label for="cor">Cor: <span class="mandatory">*</span></label>
 													<input id="cor" name="cor.nome" type="text" placeholder="Informe a cor" class="default-input"/>
-													<input id="cor-id" name="cor.id" type="hidden" />
 												</div>
 											</li>
 											
@@ -101,18 +98,9 @@
 									<fieldset id="vehicle-equipment" class="checkbox-selection">
 										<legend><span class="bold">Itens</span> Opcionais</legend>
 										<ul class="field-content">
-											<li><input type="checkbox" value="checkbox_abs" id="check-abs" /><label for="check-abs">ABS</label></li>
-											<li><input type="checkbox" value="checkbox_eds" id="check-eds" /><label for="check-eds">EDS</label></li>
-											<li><input type="checkbox" value="checkbox_esp" id="check-esp" /><label for="check-esp">ESP</label></li>
-											<li><input type="checkbox" value="checkbox_air_conditioning" id="check-air-conditioning" /><label for="check-air-conditioning">Air conditioning</label></li>
-											<li><input type="checkbox" value="checkbox_airbag" id="check-airbag" /><label for="check-airbag">Air conditioning</label></li>
-											<li><input type="checkbox" value="checkbox_alarm" id="check-alarm" /><label for="check-alarm">Air conditioning</label></li>
-											<li><input type="checkbox" value="checkbox_panoramic_roof" id="check-panoramic-roof" /><label for="check-panoramic-roof">Panoramic roof</label></li>
-											<li><input type="checkbox" value="checkbox_protection_framework" id="check-protection-framework" /><label for="check-protection-framework">Protection framework</label></li>
-											<li><input type="checkbox" value="checkbox_tow" id="checkbox-tow" /><label for="checkbox-tow">Tow</label></li>
-											<li><input type="checkbox" value="checkbox_traction_control" id="checkbox-traction-control" /><label for="checkbox-traction-control">Traction control</label></li>
-											<li><input type="checkbox" value="checkbox_board_computer" id="checkbox-board-computer" /><label for="checkbox-board-computer">Board computer</label></li>
-											<li><input type="checkbox" value="checkbox_steering_wheel" id="checkbox-steering-wheel" /><label for="checkbox-steering-wheel">Steering wheel controls</label></li>
+											<c:forEach items="${listaItensOpcionais}" var="itemOpcional">
+												<li><input type="checkbox" id="${itemOpcional.label}" value="${itemOpcional.id}" /><label for="${itemOpcional.label}">${itemOpcional.nome}</label></li>
+											</c:forEach>
 										</ul>
 									
 									</fieldset>
@@ -197,38 +185,43 @@
 	
 	<script>
 		$(function() {
-			var esportes = [
-				"Natação",
-				"Futebol",
-				"Vôlei",
-				"Basquete"
-			];
+			var url = "http://localhost:8080<c:url value='/interoperabilidade/listaMarcas'/>";
+			var marcas = [];
+			$.getJSON( url, function( json ) {
+				$.each(json.marcas, function(i){  
+					marcas[i] = json.marcas[i].id +" - " + json.marcas[i].nome;
+				}); 
+			});
 			$("#marca" ).autocomplete({
-				source: esportes
+				source: marcas
 			});
 		});
 		$(function() {
-			var esportes = [
-				"Natação",
-				"Futebol",
-				"Vôlei",
-				"Basquete"
-			];
+			var url = "http://localhost:8080<c:url value='/interoperabilidade/listaMarcas'/>";
+			var modelos = [];
+			$.getJSON( url, function( json ) {
+				$.each(json.marcas, function(i){  
+					marcas[i] = json.marcas[i].id +" - " + json.marcas[i].nome;
+				}); 
+			});
 			$("#modelo" ).autocomplete({
-				source: esportes
+				source: modelos
 			});
 		});
+		
 		$(function() {
-			var esportes = [
-				"Amarelo",
-				"Azul",
-				"Verde",
-				"Cinza"
-			];
+			var url = "http://localhost:8080<c:url value='/interoperabilidade/listaCores'/>";
+			var cores = [];
+			$.getJSON( url, function( json ) {
+				$.each(json.cores, function(i){  
+					cores[i] = json.cores[i].id +" - " + json.cores[i].nome;
+				}); 
+			});			
 			$("#cor" ).autocomplete({
-				source: esportes
+				source:cores,
 			});
 		});
+		
 	</script>
 
 	

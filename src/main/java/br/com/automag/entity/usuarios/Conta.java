@@ -23,7 +23,7 @@ import br.com.paiter.core.entity.BasePersistEntity;
 @NamedQueries(
 	value = { 
 		@NamedQuery(name="existeLogin",
-			query="SELECT c FROM Conta c WHERE c.login = :login"),
+			query="SELECT c FROM Conta c join fetch c.cliente WHERE c.login = :login"),
 	}
 )
 public class Conta extends BasePersistEntity {

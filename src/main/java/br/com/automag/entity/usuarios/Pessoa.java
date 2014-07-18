@@ -34,10 +34,10 @@ import br.com.paiter.core.entity.BasePersistEntity;
 @Where(clause = "removido = 'NAO'")
 @SequenceGenerator(name="pessoa_seq",sequenceName="pessoa_seq",allocationSize=1)
 @NamedQueries(
-		value = {
-				@NamedQuery(name="existsEmail",
-						query="SELECT p FROM Pessoa p WHERE p.email = :email")
-		}
+	value = {
+		@NamedQuery(name="existsEmail",
+				query="SELECT p FROM Pessoa p WHERE p.email = :email")
+	}
 )
 public class Pessoa extends BasePersistEntity {
 

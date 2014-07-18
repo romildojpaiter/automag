@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import br.com.automag.auth.LogadoRule;
 import br.com.automag.persistencia.ClienteDAO;
+import br.com.automag.persistencia.ItemOpcionalDAO;
 import br.com.caelum.brutauth.auth.annotations.CustomBrutauthRules;
 import br.com.caelum.vraptor.Controller;
 import br.com.caelum.vraptor.Get;
@@ -17,6 +18,7 @@ public class ClienteController {
 	
 	@Inject private Result result;
 	@Inject private ClienteDAO clienteDAO;
+	@Inject private ItemOpcionalDAO itemOpcionalDAO;
 
 	@Get
 	@CustomBrutauthRules(LogadoRule.class)
@@ -34,7 +36,7 @@ public class ClienteController {
 	@CustomBrutauthRules(LogadoRule.class)
 	public void incluirveiculo(){
 		
-		
+		result.include("listaItensOpcionais", itemOpcionalDAO.findAllItensOpcionaisAtivos());
 		
 	}
 }

@@ -33,7 +33,7 @@
 	<script src="<c:url value="/js/plugins/jquery.uniform.min.js"/>"></script>
 	<script src="<c:url value="/js/plugins/jquery.flexslider-min.js"/>"></script>
 	<script src="<c:url value="/js/plugins/jquery.carouFredSel-6.1.0-packed.js"/>"></script>
-	<script src="<c:url value="/http://maps.googleapis.com/maps/api/js?sensor=false"/>"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
 	<script src="<c:url value="/js/plugins/jquery.prettyPhoto.js"/>"></script>
 	<script src="<c:url value="/js/plugins/jquery.countdown.js"/>"></script>
 	
